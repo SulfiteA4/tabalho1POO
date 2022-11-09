@@ -26,7 +26,58 @@ public class IUPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuCadastros = new javax.swing.JMenu();
+        menuItemCliente = new javax.swing.JMenuItem();
+        menuItemCorretor = new javax.swing.JMenuItem();
+        subMenuCadImovel = new javax.swing.JMenu();
+        menuItemApResidencial = new javax.swing.JMenuItem();
+        menuItemComercial = new javax.swing.JMenuItem();
+        menuItemVenda = new javax.swing.JMenuItem();
+        jMenuRelat = new javax.swing.JMenu();
+        subMenuRelCli = new javax.swing.JMenu();
+        subMenuRelCorre = new javax.swing.JMenu();
+        subMenuRelVend = new javax.swing.JMenu();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jMenuCadastros.setText("Cadastros ");
+
+        menuItemCliente.setText("Cadastro Cliente");
+        jMenuCadastros.add(menuItemCliente);
+
+        menuItemCorretor.setText("Cadastro Corretor ");
+        jMenuCadastros.add(menuItemCorretor);
+
+        subMenuCadImovel.setText("Cadastro Imovel ");
+
+        menuItemApResidencial.setText("Cadastro Apartamento Residencial");
+        subMenuCadImovel.add(menuItemApResidencial);
+
+        menuItemComercial.setText("Cadastro Comercial ");
+        subMenuCadImovel.add(menuItemComercial);
+
+        jMenuCadastros.add(subMenuCadImovel);
+
+        menuItemVenda.setText("Cadastro Venda ");
+        jMenuCadastros.add(menuItemVenda);
+
+        jMenuBar1.add(jMenuCadastros);
+
+        jMenuRelat.setText("Relatórios");
+
+        subMenuRelCli.setText("Relatório de Clientes ");
+        jMenuRelat.add(subMenuRelCli);
+
+        subMenuRelCorre.setText("Relatório de Corretores ");
+        jMenuRelat.add(subMenuRelCorre);
+
+        subMenuRelVend.setText("Relatório de Vendas ");
+        jMenuRelat.add(subMenuRelVend);
+
+        jMenuBar1.add(jMenuRelat);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -36,7 +87,7 @@ public class IUPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 277, Short.MAX_VALUE)
         );
 
         pack();
@@ -78,5 +129,17 @@ public class IUPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuCadastros;
+    private javax.swing.JMenu jMenuRelat;
+    private javax.swing.JMenuItem menuItemApResidencial;
+    private javax.swing.JMenuItem menuItemCliente;
+    private javax.swing.JMenuItem menuItemComercial;
+    private javax.swing.JMenuItem menuItemCorretor;
+    private javax.swing.JMenuItem menuItemVenda;
+    private javax.swing.JMenu subMenuCadImovel;
+    private javax.swing.JMenu subMenuRelCli;
+    private javax.swing.JMenu subMenuRelCorre;
+    private javax.swing.JMenu subMenuRelVend;
     // End of variables declaration//GEN-END:variables
 }

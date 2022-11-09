@@ -4,6 +4,8 @@
  */
 package modelos;
 
+import interfaces.IUPrincipal;
+
 /**
  *
  * @author Martines
@@ -11,6 +13,9 @@ package modelos;
 public class Main {
    
     public static void main(String[] args) {
-            
+         IUPrincipal principal = new IUPrincipal();
+         principal.setVisible(true);
+         principal.setTitle("Sistema Imobiliária");
+         principal.toFront();
     }
 }

@@ -47,6 +47,23 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Relat&#xf3;rios"/>
           </Properties>
+          <SubComponents>
+            <Menu class="javax.swing.JMenu" name="subMenuRelCli">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Relat&#xf3;rio de Clientes "/>
+              </Properties>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="subMenuRelCorre">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Relat&#xf3;rio de Corretores "/>
+              </Properties>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="subMenuRelVend">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Relat&#xf3;rio de Vendas "/>
+              </Properties>
+            </Menu>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>

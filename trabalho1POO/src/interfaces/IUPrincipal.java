@@ -35,6 +35,9 @@ public class IUPrincipal extends javax.swing.JFrame {
         menuItemComercial = new javax.swing.JMenuItem();
         menuItemVenda = new javax.swing.JMenuItem();
         jMenuRelat = new javax.swing.JMenu();
+        subMenuRelCli = new javax.swing.JMenu();
+        subMenuRelCorre = new javax.swing.JMenu();
+        subMenuRelVend = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,6 +65,16 @@ public class IUPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenuCadastros);
 
         jMenuRelat.setText("Relatórios");
+
+        subMenuRelCli.setText("Relatório de Clientes ");
+        jMenuRelat.add(subMenuRelCli);
+
+        subMenuRelCorre.setText("Relatório de Corretores ");
+        jMenuRelat.add(subMenuRelCorre);
+
+        subMenuRelVend.setText("Relatório de Vendas ");
+        jMenuRelat.add(subMenuRelVend);
+
         jMenuBar1.add(jMenuRelat);
 
         setJMenuBar(jMenuBar1);
@@ -125,5 +138,8 @@ public class IUPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemCorretor;
     private javax.swing.JMenuItem menuItemVenda;
     private javax.swing.JMenu subMenuCadImovel;
+    private javax.swing.JMenu subMenuRelCli;
+    private javax.swing.JMenu subMenuRelCorre;
+    private javax.swing.JMenu subMenuRelVend;
     // End of variables declaration//GEN-END:variables
 }

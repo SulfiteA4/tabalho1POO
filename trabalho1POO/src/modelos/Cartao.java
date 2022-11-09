@@ -8,6 +8,22 @@ package modelos;
  *
  * @author Martines
  */
-public class Cartao {
+public class Cartao extends Pagamento {
+    private String nome; 
+    private String bandeira; 
+    private String numero; 
+
+    public Cartao(String nome, String bandeira, String numero, String tipoPagamento) {
+        super(tipoPagamento);
+        this.nome = nome;
+        this.bandeira = bandeira;
+        this.numero = numero;
+    }
+    
+    
+    @Override
+    public String toString(){
+        return "Cartao: Nome:" + nome + "Bandeira: " + bandeira + "Numero:" + numero;
+    }
     
 }

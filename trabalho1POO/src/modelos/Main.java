@@ -8,6 +8,9 @@ package modelos;
  *
  * @author Martines
  */
-public class teste {
-    
+public class Main {
+   
+    public static void main(String[] args) {
+            
+    }
 }

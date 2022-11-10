@@ -20,6 +20,8 @@ public class Imobiliaria {
     private ArrayList<Usuario> corretores;
     private ArrayList<Seguro> seguros;
     private Configuracao configuracoes;
+    
+    public Imobiliaria(){};
 
     public Imobiliaria(String nome, String endereco, Configuracao configuracoes) {
         this.nome = nome;

@@ -4,10 +4,24 @@
  */
 package controladores;
 
+import modelos.Imobiliaria;
+
 /**
  *
  * @author Lucas
  */
 public class Controlador {
+    public static Imobiliaria imobiliaria = new Imobiliaria();
     
+    public String getConfigClientes(){
+        return imobiliaria.getConfiguracoes().getArquivoClientes();
+    }
+    
+    public String getConfigCorretores(){
+        return imobiliaria.getConfiguracoes().getArquivoCorretores();
+    }
+    
+    public String getConfigImoveis(){
+        return imobiliaria.getConfiguracoes().getArquivoImoveis();
+    }
 }

@@ -36,7 +36,7 @@ public class IOArquivos {
             
             Configuracao configAtual;
             FileInputStream ios;
-            if (!arquivoConfig.exists()){
+            if (arquivoConfig.exists() == false){
                 configAtual = new Configuracao();
                 this.escreverConfig(configAtual);
                 return configAtual;
@@ -64,6 +64,7 @@ public class IOArquivos {
             FileOutputStream fos = new FileOutputStream("config.arq");
             ObjectOutputStream ous = new ObjectOutputStream(fos);
             
+            ous.writeObject(novaConfig);
         }catch(FileNotFoundException ex){
             JOptionPane.showMessageDialog(null, "Erro ao salvar o arquivo de configurações!");
         }catch(IOException ex){
@@ -338,7 +339,7 @@ public class IOArquivos {
             ArrayList<Aluguel> alugueis = lerAlugueis();
             
             int contAlugueis;
-            if(!(arquivoAlugueis.exists()))arquivoAlugueis.createNewFile();
+            if(arquivoAlugueis.exists() == false)arquivoAlugueis.createNewFile();
             
             FileOutputStream fos = new FileOutputStream(arquivoAlugueis);
             ObjectOutputStream ous = new ObjectOutputStream(fos);
@@ -393,7 +394,7 @@ public class IOArquivos {
             ArrayList<Seguro> seguros = lerSeguros();
             int contSeguros;
             
-            if(!(arquivoSeguros.exists()))arquivoSeguros.createNewFile();
+            if(arquivoSeguros.exists() == false)arquivoSeguros.createNewFile();
             
             FileOutputStream fos = new FileOutputStream(arquivoSeguros);
             ObjectOutputStream ous = new ObjectOutputStream(fos);

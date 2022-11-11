@@ -4,13 +4,14 @@
  */
 package modelos;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  *
  * @author Martines
  */
-public abstract class Usuario {
+public abstract class Usuario implements Serializable{
     protected int codigoUsuario;
     protected String nome; 
     protected String cpf; 

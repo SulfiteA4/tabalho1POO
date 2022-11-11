@@ -19,20 +19,20 @@ public class Imobiliaria {
     private ArrayList<Usuario> clientes;
     private ArrayList<Usuario> corretores;
     private ArrayList<Seguro> seguros;
-    private Configuracao configuracoes;
-    
-    public Imobiliaria(){};
+    private static Configuracao configuracoes ;
 
-    public Imobiliaria(String nome, String endereco, Configuracao configuracoes) {
-        this.nome = nome;
-        this.endereco = endereco;
+    
+    public Imobiliaria() {
+        this.nome = "Imobiaria A";
+        this.endereco = "Avendia Coronel Marcondes 1357";
         this.alugueis = new ArrayList();
         this.vendas = new ArrayList();
         this.imoveis = new ArrayList();
         this.clientes = new ArrayList();
         this.corretores = new ArrayList();
         this.seguros = new ArrayList();
-        this.configuracoes = configuracoes;
+        this.configuracoes = new Configuracao();
+        
     }
     
     //so implementei os getters e setters dos que não são ArrayList

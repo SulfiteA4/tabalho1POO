@@ -15,16 +15,14 @@ public class Configuracao {
     private String arquivoClientes;//ja foi
     private String arquivoCorretores;//ja foi
     private String arquivoSeguros;
-
-    public Configuracao(){}
     
-    public Configuracao(String arquivoAlugueis, String arquivoVendas, String arquivoImoveis, String arquivoClientes, String arquivoCorretores, String arquivoSeguros) {
-        this.arquivoAlugueis = arquivoAlugueis;
-        this.arquivoVendas = arquivoVendas;
-        this.arquivoImoveis = arquivoImoveis;
-        this.arquivoClientes = arquivoClientes;
-        this.arquivoCorretores = arquivoCorretores;
-        this.arquivoSeguros = arquivoSeguros;
+    public Configuracao() {
+        this.arquivoAlugueis = "alugueis.arq";
+        this.arquivoVendas = "vendas.arq";
+        this.arquivoImoveis = "imoveis.arq";
+        this.arquivoClientes = "clientes.arq";
+        this.arquivoCorretores = "corretores.arq";
+        this.arquivoSeguros = "seguros.arq";
     }
 
     public String getArquivoAlugueis() {

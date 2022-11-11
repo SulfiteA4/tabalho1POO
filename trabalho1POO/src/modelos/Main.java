@@ -4,8 +4,11 @@
  */
 package modelos;
 
+import Arquivos.IOArquivos;
 import interfaces.IUPrincipal;
-
+import java.time.LocalDate;
+import modelos.Cliente;
+import controladores.Controlador;
 /**
  *
  * @author Martines
@@ -13,6 +16,12 @@ import interfaces.IUPrincipal;
 public class Main {
    
     public static void main(String[] args) {
+        //carregar configurações
+        IOArquivos arq = new IOArquivos();
+        Imobiliaria imobiliaria = new Imobiliaria();
+        imobiliaria.setConfiguracoes(arq.lerConfig());
+        
+        
          IUPrincipal principal = new IUPrincipal();
          principal.setVisible(true);
          principal.setTitle("Sistema Imobiliária");

@@ -5,6 +5,10 @@
 package controladores;
 
 import Arquivos.IOArquivos;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import modelos.Cliente;
+import modelos.Configuracao;
 import modelos.Imobiliaria;
 
 /**
@@ -12,7 +16,20 @@ import modelos.Imobiliaria;
  * @author Lucas
  */
 public class Controlador {
+    
     public static Imobiliaria imobiliaria = new Imobiliaria();
+    
+    /* set e ge4t das configuracoes*/
+    public Configuracao getConfiguracoes(){
+        return imobiliaria.getConfiguracoes();
+    }
+    
+    public void setConfiguracoes(Configuracao config){
+        imobiliaria.setConfiguracoes(config);
+        IOArquivos arq = new IOArquivos();
+        arq.escreverConfig(config);
+        JOptionPane.showMessageDialog(null, "configurações slavas com sucesso!");
+    }
     
     
     /* funções para recuperar arquivos de configurações */
@@ -42,4 +59,14 @@ public class Controlador {
     }
     
     //funções para add registros aos arquivos
+    
+    public void addCliente(Cliente novoCliente){
+        IOArquivos arq = new IOArquivos();
+        arq.escreverCliente(novoCliente);
+    }
+    
+    public void getTodosClientes(){
+        IOArquivos arq = new IOArquivos();
+        System.out.println(arq.lerClientes());    
+    }
 }

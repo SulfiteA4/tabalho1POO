@@ -4,6 +4,7 @@
  */
 package controladores;
 
+import Arquivos.IOArquivos;
 import modelos.Imobiliaria;
 
 /**
@@ -12,6 +13,9 @@ import modelos.Imobiliaria;
  */
 public class Controlador {
     public static Imobiliaria imobiliaria = new Imobiliaria();
+    
+    
+    /* funções para recuperar arquivos de configurações */
     
     public String getConfigClientes(){
         return imobiliaria.getConfiguracoes().getArquivoClientes();
@@ -36,4 +40,6 @@ public class Controlador {
     public String getConfigSeguros(){
         return imobiliaria.getConfiguracoes().getArquivoSeguros();
     }
+    
+    //funções para add registros aos arquivos
 }

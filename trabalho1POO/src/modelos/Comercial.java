@@ -34,7 +34,7 @@ public class Comercial extends Imovel{
     
     @Override
     public String toString() {
-        return "Comercial{" + "taxaImpostoFederal=" + taxaImpostoFederal + '}';
+        return "Comercial{" + "codigoImovel=" + codigoImovel + ", endereco=" + endereco + ", dataConstrucao=" + dataConstrucao + ", areaTotal=" + areaTotal + ", areaConstruida=" + areaConstruida + ", qtdDormitorios=" + qtdDormitorios + ", qtdBanheiros=" + qtdBanheiros + ", qtdVagasGaragem=" + qtdVagasGaragem + ", valorIptu=" + valorIptu + ", valorVenda=" + valorVenda + ", valorAluguel=" + valorAluguel + "taxaImpostoFederal=" + taxaImpostoFederal + '}';
     }
     
     

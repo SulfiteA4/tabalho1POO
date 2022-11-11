@@ -97,8 +97,8 @@ public class Controlador {
     
     //
     
-    public void getTodosClientes(){
+    public ArrayList<Cliente> getTodosClientes(){
         IOArquivos arq = new IOArquivos();
-        System.out.println(arq.lerClientes());    
+        return arq.lerClientes();    
     }
 }

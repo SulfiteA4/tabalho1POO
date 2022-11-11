@@ -21,6 +21,8 @@ public class Main {
         Imobiliaria imobiliaria = new Imobiliaria();
         imobiliaria.setConfiguracoes(arq.lerConfig());
         
+        Controlador control = new Controlador();
+        control.getTodosClientes();
         
          IUPrincipal principal = new IUPrincipal();
          principal.setVisible(true);

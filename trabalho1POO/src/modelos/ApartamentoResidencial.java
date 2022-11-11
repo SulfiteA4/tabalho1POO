@@ -42,7 +42,7 @@ public class ApartamentoResidencial extends Imovel{
 
     @Override
     public String toString() {
-        return "ApartamentoResidencial{" + "andar=" + andar + ", valorCondominio=" + valorCondominio + '}';
+        return "ApartamentoResidencial{" + " codigoImovel=" + codigoImovel + ", endereco=" + endereco + ", dataConstrucao=" + dataConstrucao + ", areaTotal=" + areaTotal + ", areaConstruida=" + areaConstruida + ", qtdDormitorios=" + qtdDormitorios + ", qtdBanheiros=" + qtdBanheiros + ", qtdVagasGaragem=" + qtdVagasGaragem + ", valorIptu=" + valorIptu + ", valorVenda=" + valorVenda + ", valorAluguel=" + valorAluguel + "andar=" + andar + ", valorCondominio=" + valorCondominio + '}';
     }
     
     

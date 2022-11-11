@@ -20,8 +20,7 @@ public class Main {
         IOArquivos arq = new IOArquivos();
         Imobiliaria imobiliaria = new Imobiliaria();
         imobiliaria.setConfiguracoes(arq.lerConfig());
-        
-        
+
          IUPrincipal principal = new IUPrincipal();
          principal.setVisible(true);
          principal.setTitle("Sistema Imobiliária");

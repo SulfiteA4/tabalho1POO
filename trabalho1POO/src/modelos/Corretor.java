@@ -58,7 +58,7 @@ public class Corretor extends Usuario{
 
     @Override
     public String toString() {
-        return "Corretor{" + "creci=" + creci + ", salario=" + salario + ", pis=" + pis + ", dataAdmissao=" + dataAdmissao + '}';
+        return "Corretor{" + "codigoUsuario=" + codigoUsuario + ", nome=" + nome + ", cpf=" + cpf + ", rg=" + rg + ", dataNascimento=" + dataNascimento + ", endereco=" + endereco + ", cep=" + cep + ", telefone=" + telefone + ", email=" + email +", creci=" + creci + ", salario=" + salario + ", pis=" + pis + ", dataAdmissao=" + dataAdmissao + '}';
     }
     
     

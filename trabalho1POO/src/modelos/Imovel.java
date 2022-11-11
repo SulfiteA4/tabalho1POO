@@ -4,13 +4,14 @@
  */
 package modelos;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  *
  * @author Lucas
  */
-public class Imovel {
+public class Imovel implements Serializable{
     protected int codigoImovel;
     protected String endereco;
     protected LocalDate dataConstrucao;
@@ -22,8 +23,10 @@ public class Imovel {
     protected float valorIptu;
     protected float valorVenda;
     protected float valorAluguel;
+    protected boolean disponivelAluguel;
+    protected boolean disponivelVenda;
 
-    public Imovel(int codigoImovel, String endereco, LocalDate dataConstrucao, float areaTotal, float areaConstruida, int qtdDormitorios, int qtdBanheiros, int qtdVagasGaragem, float valorIptu, float valorVenda, float valorAluguel) {
+    public Imovel(int codigoImovel, String endereco, LocalDate dataConstrucao, float areaTotal, float areaConstruida, int qtdDormitorios, int qtdBanheiros, int qtdVagasGaragem, float valorIptu, float valorVenda, float valorAluguel, boolean disponivelAluguel, boolean disponivelVenda) {
         this.codigoImovel = codigoImovel;
         this.endereco = endereco;
         this.dataConstrucao = dataConstrucao;
@@ -35,7 +38,27 @@ public class Imovel {
         this.valorIptu = valorIptu;
         this.valorVenda = valorVenda;
         this.valorAluguel = valorAluguel;
+        this.disponivelAluguel = disponivelAluguel;
+        this.disponivelVenda = disponivelVenda;
     }
+
+    public boolean isDisponivelAluguel() {
+        return disponivelAluguel;
+    }
+
+    public void setDisponivelAluguel(boolean disponivelAluguel) {
+        this.disponivelAluguel = disponivelAluguel;
+    }
+
+    public boolean isDisponivelVenda() {
+        return disponivelVenda;
+    }
+
+    public void setDisponivelVenda(boolean disponivelVenda) {
+        this.disponivelVenda = disponivelVenda;
+    }
+
+    
 
     public int getCodigoImovel() {
         return codigoImovel;

@@ -26,7 +26,7 @@ public class Cliente extends Usuario {
 
     @Override
     public String toString() {  
-        return "Cliente{" + "dataCadastro=" + dataCadastro + '}';
+        return "Cliente{" + "codigoUsuario=" + codigoUsuario + ", nome=" + nome + ", cpf=" + cpf + ", rg=" + rg + ", dataNascimento=" + dataNascimento + ", endereco=" + endereco + ", cep=" + cep + ", telefone=" + telefone + ", email=" + email +", dataCadastro=" + dataCadastro + '}';
     }
     
    

@@ -8,6 +8,15 @@ package modelos;
  *
  * @author Martines
  */
-public class Dinheiro {
+public class Dinheiro extends Pagamento{
+
+    public Dinheiro(String tipoPagamento) {
+        super(tipoPagamento);
+    }
+    
+    @Override
+    public String toString() {
+        return "Dinheiro{" + '}';
+    }
     
 }

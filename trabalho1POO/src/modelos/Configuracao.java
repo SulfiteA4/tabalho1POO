@@ -9,8 +9,8 @@ package modelos;
  * @author Lucas
  */
 public class Configuracao {
-    private String arquivoAlugueis;
-    private String arquivoVendas;
+    private String arquivoAlugueis;//ja foi
+    private String arquivoVendas;//ja foi
     private String arquivoImoveis;//ja foi
     private String arquivoClientes;//ja foi
     private String arquivoCorretores;//ja foi

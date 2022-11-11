@@ -18,9 +18,12 @@ import modelos.Usuario;
 import controladores.Controlador;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modelos.Aluguel;
 import modelos.Cliente;
 import modelos.Corretor;
 import modelos.Imovel;
+import modelos.Seguro;
+import modelos.Venda;
 
 /**
  *
@@ -250,4 +253,169 @@ public class IOArquivos {
         }
     }
     
+    public ArrayList<Venda> lerVendas(){
+        try{
+            Controlador control = new Controlador();
+            FileInputStream fis =  new FileInputStream(control.getConfigVendas());
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            
+            int contVendas = ois.readInt();
+            ArrayList<Venda> vendas = new ArrayList<>();
+            
+            for(int i = 0; i < contVendas; i++){
+                vendas.add((Venda) ois.readObject());
+            }
+            return vendas;
+            
+        }catch(IOException ex){
+            return null;
+        }catch(ClassNotFoundException ex){
+            return null;
+        }
+    }
+    
+    public void escreverVenda(Venda venda){
+        try{
+            Controlador control = new Controlador();
+            File arquivoVendas = new File(control.getConfigImoveis());
+            ArrayList<Venda> vendas = lerVendas();
+
+            int contVendas;
+
+            if(arquivoVendas.exists() == false)arquivoVendas.createNewFile();
+            
+            FileOutputStream fos = new FileOutputStream(arquivoVendas);
+            ObjectOutputStream ous = new ObjectOutputStream(fos);
+            
+            if(vendas != null){
+                vendas.add(venda);
+                contVendas = vendas.size();
+                ous.writeInt(contVendas);
+                for(int i = 0; i < contVendas; i++){
+                    ous.writeObject(vendas.get(i));
+                }
+            }else{
+                ous.writeInt(1);
+                ous.writeObject(venda);
+            }
+            
+            ous.close();
+            fos.close();
+            JOptionPane.showMessageDialog(null, "A venda foi cadastrada com sucesso!");
+            
+        }catch(FileNotFoundException ex){
+            JOptionPane.showMessageDialog(null, "Erro ao abrir o arquivo de vendas.");
+        }catch(IOException ex){
+            Logger.getLogger(IOArquivos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public ArrayList<Aluguel> lerAlugueis(){
+            try {
+                Controlador control = new Controlador();
+                FileInputStream fis = new FileInputStream(control.getConfigAlugueis());
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                
+                int contAlugueis = ois.readInt();
+                ArrayList<Aluguel> alugueis = new ArrayList<>();
+                
+                for(int i = 0; i < contAlugueis; i++){
+                    alugueis.add((Aluguel) ois.readObject());
+                }
+                return alugueis;
+                
+            }catch(IOException ex) {
+                return null;
+            }catch(ClassNotFoundException ex ){
+                return null;
+            }
+        }
+    
+    public void escreverAlugueis(Aluguel aluguel){
+        try{
+            Controlador control = new Controlador();
+            File arquivoAlugueis = new File(control.getConfigAlugueis());
+            ArrayList<Aluguel> alugueis = lerAlugueis();
+            
+            int contAlugueis;
+            if(!(arquivoAlugueis.exists()))arquivoAlugueis.createNewFile();
+            
+            FileOutputStream fos = new FileOutputStream(arquivoAlugueis);
+            ObjectOutputStream ous = new ObjectOutputStream(fos);
+            
+            if( aluguel != null){
+                alugueis.add(aluguel);
+                contAlugueis = alugueis.size();
+                ous.writeInt(contAlugueis);
+                for(int i = 0; i < contAlugueis; i++){
+                    ous.writeObject(alugueis.get(i));
+                }
+            }else{
+                ous.writeInt(1);
+                ous.writeObject(aluguel);
+            }
+            ous.close();
+            fos.close();
+            JOptionPane.showMessageDialog(null, "Aluguel cadastrado com sucesso!");
+            
+        }catch(FileNotFoundException ex){
+            JOptionPane.showMessageDialog(null, "Erro ao abrir o arquivo de alugueis!");
+        }catch(IOException ex){
+            Logger.getLogger(IOArquivos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public ArrayList<Seguro> lerSeguros(){
+        try{
+            Controlador control = new Controlador();
+            FileInputStream fis = new FileInputStream(control.getConfigSeguros());
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            
+           int contSeguros = ois.readInt();
+           ArrayList<Seguro> seguros = new ArrayList<>();
+           
+           for(int i = 0; i < contSeguros; i++){
+               seguros.add((Seguro) ois.readObject());
+           }
+           return seguros;
+            
+        }catch(IOException ex){
+            return null;
+        }catch(ClassNotFoundException ex){
+            return null;
+        }
+    }
+    
+    public void escreverSeguros(Seguro seguro){
+        try{
+            Controlador control = new Controlador();
+            File arquivoSeguros = new File(control.getConfigSeguros());
+            ArrayList<Seguro> seguros = lerSeguros();
+            int contSeguros;
+            
+            if(!(arquivoSeguros.exists()))arquivoSeguros.createNewFile();
+            
+            FileOutputStream fos = new FileOutputStream(arquivoSeguros);
+            ObjectOutputStream ous = new ObjectOutputStream(fos);
+            
+            if( seguros != null){
+                seguros.add(seguro);
+                contSeguros = seguros.size();
+                ous.writeInt(contSeguros);
+                for(int i = 0; i < contSeguros; i++){
+                    ous.writeObject(seguros.get(i));
+                }
+            }else{
+                ous.writeInt(1);
+                ous.writeObject(seguro);
+            }
+            ous.close();
+            fos.close();
+            JOptionPane.showMessageDialog(null, "Seguro Cadastrado com sucesso!");
+        }catch(FileNotFoundException ex){
+            JOptionPane.showMessageDialog(null, "Problema ao Abrir o arquivo de seguros!!");
+        }catch(IOException ex){
+            Logger.getLogger(IOArquivos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

@@ -24,4 +24,16 @@ public class Controlador {
     public String getConfigImoveis(){
         return imobiliaria.getConfiguracoes().getArquivoImoveis();
     }
+    
+    public String getConfigVendas(){
+        return imobiliaria.getConfiguracoes().getArquivoVendas();
+    }
+    
+    public String getConfigAlugueis(){
+        return imobiliaria.getConfiguracoes().getArquivoAlugueis();
+    }
+    
+    public String getConfigSeguros(){
+        return imobiliaria.getConfiguracoes().getArquivoSeguros();
+    }
 }

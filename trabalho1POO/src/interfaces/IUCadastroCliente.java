@@ -4,6 +4,12 @@
  */
 package interfaces;
 
+import controladores.Controlador;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
+import modelos.Cliente;
+
 /**
  *
  * @author Martines
@@ -41,13 +47,13 @@ public class IUCadastroCliente extends javax.swing.JFrame {
         txtEndereco = new javax.swing.JFormattedTextField();
         txtRG = new javax.swing.JFormattedTextField();
         txtCPF = new javax.swing.JFormattedTextField();
-        Codigo = new javax.swing.JFormattedTextField();
+        txtCodigo = new javax.swing.JFormattedTextField();
         txtNome = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
         txtDadaNasc = new javax.swing.JFormattedTextField();
-        txtDataCad = new javax.swing.JFormattedTextField();
         jLabel10 = new javax.swing.JLabel();
         btnCadastroCliente = new javax.swing.JButton();
+        txtDataCad = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -124,7 +130,7 @@ public class IUCadastroCliente extends javax.swing.JFrame {
         jLabel9.setText("Data Nascimento");
 
         try {
-            txtDadaNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+            txtDadaNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -134,17 +140,22 @@ public class IUCadastroCliente extends javax.swing.JFrame {
             }
         });
 
-        try {
-            txtDataCad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
         jLabel10.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         jLabel10.setText("Data Cadastro");
 
         btnCadastroCliente.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         btnCadastroCliente.setText("Cadastrar");
+        btnCadastroCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastroClienteActionPerformed(evt);
+            }
+        });
+
+        try {
+            txtDataCad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -182,7 +193,7 @@ public class IUCadastroCliente extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Codigo)))
+                                .addComponent(txtCodigo)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
@@ -214,7 +225,7 @@ public class IUCadastroCliente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
-                    .addComponent(Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -264,6 +275,30 @@ public class IUCadastroCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelefoneActionPerformed
 
+    private void btnCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroClienteActionPerformed
+        int codigo = Integer.parseInt(txtCodigo.getText());
+        String nome = txtNome.getText(); 
+        String cpf = txtCPF.getText(); 
+        String rg = txtRG.getText(); 
+        String endereco = txtEndereco.getText(); 
+        String email = txtEmail.getText(); 
+        String dataCadastro = txtDataCad.getText();
+        String dataNasc = txtDadaNasc.getText(); 
+        String cep = txtCEP.getText(); 
+        String telefone =  txtTelefone.getText(); 
+        
+        LocalDate dateNasc =  LocalDate.parse(dataNasc,DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        LocalDate dateCad = LocalDate.parse(dataCadastro,DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        //JOptionPane.showMessageDialog(null, dateNasc.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+        //JOptionPane.showMessageDialog(null, dateCad.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+        Cliente cliente = new Cliente(dateCad, codigo, nome, cpf, rg, dateNasc, endereco, cep, telefone, email);
+        
+        Controlador control = new Controlador();
+        control.addCliente(cliente);
+        control.getTodosClientes();
+        
+    }//GEN-LAST:event_btnCadastroClienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -300,7 +335,6 @@ public class IUCadastroCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFormattedTextField Codigo;
     private javax.swing.JButton btnCadastroCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -315,6 +349,7 @@ public class IUCadastroCliente extends javax.swing.JFrame {
     private javax.swing.JLabel lblCadastroCliente;
     private javax.swing.JFormattedTextField txtCEP;
     private javax.swing.JFormattedTextField txtCPF;
+    private javax.swing.JFormattedTextField txtCodigo;
     private javax.swing.JFormattedTextField txtDadaNasc;
     private javax.swing.JFormattedTextField txtDataCad;
     private javax.swing.JFormattedTextField txtEmail;

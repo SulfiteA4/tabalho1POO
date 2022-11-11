@@ -9,13 +9,15 @@ package modelos;
  * @author Lucas
  */
 public class Configuracao {
-    private String arquivoAlugueis;
-    private String arquivoVendas;
-    private String arquivoImoveis;
-    private String arquivoClientes;
-    private String arquivoCorretores;
+    private String arquivoAlugueis;//ja foi
+    private String arquivoVendas;//ja foi
+    private String arquivoImoveis;//ja foi
+    private String arquivoClientes;//ja foi
+    private String arquivoCorretores;//ja foi
     private String arquivoSeguros;
 
+    public Configuracao(){}
+    
     public Configuracao(String arquivoAlugueis, String arquivoVendas, String arquivoImoveis, String arquivoClientes, String arquivoCorretores, String arquivoSeguros) {
         this.arquivoAlugueis = arquivoAlugueis;
         this.arquivoVendas = arquivoVendas;

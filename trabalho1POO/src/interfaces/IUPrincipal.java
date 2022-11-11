@@ -60,6 +60,7 @@ public class IUPrincipal extends javax.swing.JFrame {
         jMenuCasasResid = new javax.swing.JMenuItem();
         jMenuApResidencial = new javax.swing.JMenuItem();
         jMenuComerciais = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMenuImoveisDispAlu = new javax.swing.JMenuItem();
         jMenuImoveisDispVend = new javax.swing.JMenuItem();
         jMenuImoveisIndisp = new javax.swing.JMenuItem();
@@ -68,10 +69,29 @@ public class IUPrincipal extends javax.swing.JFrame {
         jMenuVendaCliEsp = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 10)); // NOI18N
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
+
+        jMenuBar1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
 
         jMenuCadastros.setText("Cadastros ");
+        jMenuCadastros.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        jMenuCadastros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCadastrosActionPerformed(evt);
+            }
+        });
 
         menuItemCliente.setText("Cadastro Cliente");
+        menuItemCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemClienteActionPerformed(evt);
+            }
+        });
         jMenuCadastros.add(menuItemCliente);
 
         menuItemCorretor.setText("Cadastro Corretor ");
@@ -93,6 +113,7 @@ public class IUPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenuCadastros);
 
         jMenuRelat.setText("Relatórios");
+        jMenuRelat.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
 
         subMenuRelCli.setText("Relatório de Clientes ");
 
@@ -181,6 +202,7 @@ public class IUPrincipal extends javax.swing.JFrame {
             }
         });
         subMenuRelImovel.add(jMenuComerciais);
+        subMenuRelImovel.add(jSeparator3);
 
         jMenuImoveisDispAlu.setText("Imóveis Disponíveis (Aluguel)");
         subMenuRelImovel.add(jMenuImoveisDispAlu);
@@ -219,7 +241,7 @@ public class IUPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGap(0, 278, Short.MAX_VALUE)
         );
 
         pack();
@@ -240,6 +262,18 @@ public class IUPrincipal extends javax.swing.JFrame {
     private void jMenuCasasContrVigenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCasasContrVigenteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuCasasContrVigenteActionPerformed
+
+    private void jMenuCadastrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCadastrosActionPerformed
+        
+    }//GEN-LAST:event_jMenuCadastrosActionPerformed
+
+    private void menuItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemClienteActionPerformed
+        new IUCadastroCliente().setVisible(true);
+    }//GEN-LAST:event_menuItemClienteActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        this.setLocationRelativeTo(null);
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -307,6 +341,7 @@ public class IUPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuVendas;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JMenuItem menuItemApResidencial;
     private javax.swing.JMenuItem menuItemCliente;
     private javax.swing.JMenuItem menuItemComercial;

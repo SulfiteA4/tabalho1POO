@@ -36,8 +36,36 @@ public class IUPrincipal extends javax.swing.JFrame {
         menuItemVenda = new javax.swing.JMenuItem();
         jMenuRelat = new javax.swing.JMenu();
         subMenuRelCli = new javax.swing.JMenu();
+        jMenuClientes = new javax.swing.JMenuItem();
+        jMenuCompraCliEsp = new javax.swing.JMenuItem();
+        jMenuCliAluguelAtraso = new javax.swing.JMenuItem();
         subMenuRelCorre = new javax.swing.JMenu();
+        jMenuCorretores = new javax.swing.JMenuItem();
+        jMenuFuncDoMês = new javax.swing.JMenuItem();
         subMenuRelVend = new javax.swing.JMenu();
+        jMenuIAlugueis = new javax.swing.JMenuItem();
+        jMenuAlugFinalizados = new javax.swing.JMenuItem();
+        jMenuAlugNaoFinalizados = new javax.swing.JMenuItem();
+        jMenuCasasContrVigente = new javax.swing.JMenuItem();
+        jMenuApContrVigente = new javax.swing.JMenuItem();
+        jMenuComerciaisContrVigente = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenuVendas = new javax.swing.JMenuItem();
+        jMenuLucrosTotais = new javax.swing.JMenuItem();
+        jMenuMesesEspeci = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        jMenuSeguros = new javax.swing.JMenuItem();
+        subMenuRelImovel = new javax.swing.JMenu();
+        jMenuTodosImoveis = new javax.swing.JMenuItem();
+        jMenuCasasResid = new javax.swing.JMenuItem();
+        jMenuApResidencial = new javax.swing.JMenuItem();
+        jMenuComerciais = new javax.swing.JMenuItem();
+        jMenuImoveisDispAlu = new javax.swing.JMenuItem();
+        jMenuImoveisDispVend = new javax.swing.JMenuItem();
+        jMenuImoveisIndisp = new javax.swing.JMenuItem();
+        jMenuImovAtrasoAlug = new javax.swing.JMenuItem();
+        jMenuAlugCliEsp = new javax.swing.JMenuItem();
+        jMenuVendaCliEsp = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,13 +95,117 @@ public class IUPrincipal extends javax.swing.JFrame {
         jMenuRelat.setText("Relatórios");
 
         subMenuRelCli.setText("Relatório de Clientes ");
+
+        jMenuClientes.setText("Todos Clientes");
+        subMenuRelCli.add(jMenuClientes);
+
+        jMenuCompraCliEsp.setText("Histórico de Compra Cliente Específico");
+        subMenuRelCli.add(jMenuCompraCliEsp);
+
+        jMenuCliAluguelAtraso.setText("Clientes com Aluguel em Atraso");
+        subMenuRelCli.add(jMenuCliAluguelAtraso);
+
         jMenuRelat.add(subMenuRelCli);
 
         subMenuRelCorre.setText("Relatório de Corretores ");
+
+        jMenuCorretores.setText("Todos Corretores ");
+        subMenuRelCorre.add(jMenuCorretores);
+
+        jMenuFuncDoMês.setText("Funcionários do Mês");
+        subMenuRelCorre.add(jMenuFuncDoMês);
+
         jMenuRelat.add(subMenuRelCorre);
 
-        subMenuRelVend.setText("Relatório de Vendas ");
+        subMenuRelVend.setText("Relatório de Aluguel e Vendas  ");
+
+        jMenuIAlugueis.setText("Todos Alugueis");
+        subMenuRelVend.add(jMenuIAlugueis);
+
+        jMenuAlugFinalizados.setText("Alugueis Finalizados");
+        subMenuRelVend.add(jMenuAlugFinalizados);
+
+        jMenuAlugNaoFinalizados.setText("Alugueis Não Finalizados ");
+        subMenuRelVend.add(jMenuAlugNaoFinalizados);
+
+        jMenuCasasContrVigente.setText("Casas Residenciais Alugadas (Contrado Vigente)");
+        jMenuCasasContrVigente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCasasContrVigenteActionPerformed(evt);
+            }
+        });
+        subMenuRelVend.add(jMenuCasasContrVigente);
+
+        jMenuApContrVigente.setText("Apartamentos Residenciais Alugados (Contrato Vigente)");
+        subMenuRelVend.add(jMenuApContrVigente);
+
+        jMenuComerciaisContrVigente.setText("Estabelecimentos Comerciais Alugados (Contrato Vigente)");
+        subMenuRelVend.add(jMenuComerciaisContrVigente);
+        subMenuRelVend.add(jSeparator1);
+
+        jMenuVendas.setText("Todas as Vendas");
+        subMenuRelVend.add(jMenuVendas);
+
+        jMenuLucrosTotais.setText("Lucros Totais das Vendas ");
+        subMenuRelVend.add(jMenuLucrosTotais);
+
+        jMenuMesesEspeci.setText("Vendas em Meses Específicos");
+        subMenuRelVend.add(jMenuMesesEspeci);
+        subMenuRelVend.add(jSeparator2);
+
+        jMenuSeguros.setText("Seguros Cadastrados");
+        subMenuRelVend.add(jMenuSeguros);
+
         jMenuRelat.add(subMenuRelVend);
+
+        subMenuRelImovel.setText("Relatório de imóveis ");
+
+        jMenuTodosImoveis.setText("Todos Imóveis");
+        jMenuTodosImoveis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuTodosImoveisActionPerformed(evt);
+            }
+        });
+        subMenuRelImovel.add(jMenuTodosImoveis);
+
+        jMenuCasasResid.setText("Casas Residenciais");
+        subMenuRelImovel.add(jMenuCasasResid);
+
+        jMenuApResidencial.setText("Apartamentos Residenciais");
+        subMenuRelImovel.add(jMenuApResidencial);
+
+        jMenuComerciais.setText("Estabelecimentos Comerciais");
+        jMenuComerciais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuComerciaisActionPerformed(evt);
+            }
+        });
+        subMenuRelImovel.add(jMenuComerciais);
+
+        jMenuImoveisDispAlu.setText("Imóveis Disponíveis (Aluguel)");
+        subMenuRelImovel.add(jMenuImoveisDispAlu);
+
+        jMenuImoveisDispVend.setText("Imóveis Disponíveis (Venda)");
+        subMenuRelImovel.add(jMenuImoveisDispVend);
+
+        jMenuImoveisIndisp.setText("Imóveis Indisponíveis");
+        subMenuRelImovel.add(jMenuImoveisIndisp);
+
+        jMenuImovAtrasoAlug.setText("Imóveis Aluguel Atrasado");
+        subMenuRelImovel.add(jMenuImovAtrasoAlug);
+
+        jMenuAlugCliEsp.setText("Imóveis Alugados Cliente Específico");
+        jMenuAlugCliEsp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuAlugCliEspActionPerformed(evt);
+            }
+        });
+        subMenuRelImovel.add(jMenuAlugCliEsp);
+
+        jMenuVendaCliEsp.setText("Imóveis Comprados Cliente Específico ");
+        subMenuRelImovel.add(jMenuVendaCliEsp);
+
+        jMenuRelat.add(subMenuRelImovel);
 
         jMenuBar1.add(jMenuRelat);
 
@@ -92,6 +224,22 @@ public class IUPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuTodosImoveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuTodosImoveisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuTodosImoveisActionPerformed
+
+    private void jMenuComerciaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuComerciaisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuComerciaisActionPerformed
+
+    private void jMenuAlugCliEspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAlugCliEspActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuAlugCliEspActionPerformed
+
+    private void jMenuCasasContrVigenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCasasContrVigenteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuCasasContrVigenteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,9 +277,36 @@ public class IUPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem jMenuAlugCliEsp;
+    private javax.swing.JMenuItem jMenuAlugFinalizados;
+    private javax.swing.JMenuItem jMenuAlugNaoFinalizados;
+    private javax.swing.JMenuItem jMenuApContrVigente;
+    private javax.swing.JMenuItem jMenuApResidencial;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastros;
+    private javax.swing.JMenuItem jMenuCasasContrVigente;
+    private javax.swing.JMenuItem jMenuCasasResid;
+    private javax.swing.JMenuItem jMenuCliAluguelAtraso;
+    private javax.swing.JMenuItem jMenuClientes;
+    private javax.swing.JMenuItem jMenuComerciais;
+    private javax.swing.JMenuItem jMenuComerciaisContrVigente;
+    private javax.swing.JMenuItem jMenuCompraCliEsp;
+    private javax.swing.JMenuItem jMenuCorretores;
+    private javax.swing.JMenuItem jMenuFuncDoMês;
+    private javax.swing.JMenuItem jMenuIAlugueis;
+    private javax.swing.JMenuItem jMenuImovAtrasoAlug;
+    private javax.swing.JMenuItem jMenuImoveisDispAlu;
+    private javax.swing.JMenuItem jMenuImoveisDispVend;
+    private javax.swing.JMenuItem jMenuImoveisIndisp;
+    private javax.swing.JMenuItem jMenuLucrosTotais;
+    private javax.swing.JMenuItem jMenuMesesEspeci;
     private javax.swing.JMenu jMenuRelat;
+    private javax.swing.JMenuItem jMenuSeguros;
+    private javax.swing.JMenuItem jMenuTodosImoveis;
+    private javax.swing.JMenuItem jMenuVendaCliEsp;
+    private javax.swing.JMenuItem jMenuVendas;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JMenuItem menuItemApResidencial;
     private javax.swing.JMenuItem menuItemCliente;
     private javax.swing.JMenuItem menuItemComercial;
@@ -140,6 +315,7 @@ public class IUPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu subMenuCadImovel;
     private javax.swing.JMenu subMenuRelCli;
     private javax.swing.JMenu subMenuRelCorre;
+    private javax.swing.JMenu subMenuRelImovel;
     private javax.swing.JMenu subMenuRelVend;
     // End of variables declaration//GEN-END:variables
 }

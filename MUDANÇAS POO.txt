@@ -1,1 +1,2 @@
 - Alteração na classe Usuario para abstract. 
+- Os itens 6 e 8 dos relatórios geram a mesma lista de imóveis, portanto transformamos esses dois em um só relatório, sendo ele o relatório de imóveis indisponíveis, seja pra locação ou venda. 

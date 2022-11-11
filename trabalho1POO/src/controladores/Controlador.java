@@ -7,9 +7,14 @@ package controladores;
 import Arquivos.IOArquivos;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import modelos.Aluguel;
 import modelos.Cliente;
 import modelos.Configuracao;
+import modelos.Corretor;
 import modelos.Imobiliaria;
+import modelos.Imovel;
+import modelos.Seguro;
+import modelos.Venda;
 
 /**
  *
@@ -19,7 +24,7 @@ public class Controlador {
     
     public static Imobiliaria imobiliaria = new Imobiliaria();
     
-    /* set e ge4t das configuracoes*/
+    /* set e get das configuracoes*/
     public Configuracao getConfiguracoes(){
         return imobiliaria.getConfiguracoes();
     }
@@ -64,6 +69,33 @@ public class Controlador {
         IOArquivos arq = new IOArquivos();
         arq.escreverCliente(novoCliente);
     }
+    
+    public void addCorretor(Corretor novoCorretor){
+        IOArquivos arq = new IOArquivos();
+        arq.escreverCorretor(novoCorretor);
+    }
+    
+    public void addAluguel(Aluguel novoAluguel){
+        IOArquivos arq = new IOArquivos();
+        arq.escreverAlugueis(novoAluguel);
+    }
+    
+    public void addImovel(Imovel novoImovel){
+        IOArquivos arq = new IOArquivos();
+        arq.escreverImovel(novoImovel);
+    }
+    
+    public void addVenda(Venda novaVenda){
+        IOArquivos arq = new IOArquivos();
+        arq.escreverVenda(novaVenda);
+    }
+    
+    public void addSeguro(Seguro novoSeguro){
+        IOArquivos arq = new IOArquivos();
+        arq.escreverSeguros(novoSeguro);
+    }
+    
+    //
     
     public void getTodosClientes(){
         IOArquivos arq = new IOArquivos();

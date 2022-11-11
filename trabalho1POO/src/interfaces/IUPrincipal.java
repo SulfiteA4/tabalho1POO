@@ -36,8 +36,21 @@ public class IUPrincipal extends javax.swing.JFrame {
         menuItemVenda = new javax.swing.JMenuItem();
         jMenuRelat = new javax.swing.JMenu();
         subMenuRelCli = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         subMenuRelCorre = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         subMenuRelVend = new javax.swing.JMenu();
+        subMenuRelImovel = new javax.swing.JMenu();
+        jMenuTodosImoveis = new javax.swing.JMenuItem();
+        jMenuCasasResid = new javax.swing.JMenuItem();
+        jMenuApResidencial = new javax.swing.JMenuItem();
+        jMenuComerciais = new javax.swing.JMenuItem();
+        jMenuImoveisDispAlu = new javax.swing.JMenuItem();
+        jMenuImoveisDispVend = new javax.swing.JMenuItem();
+        jMenuImoveisIndisp = new javax.swing.JMenuItem();
+        jMenuImovAtrasoAlug = new javax.swing.JMenuItem();
+        jMenuAlugCliEsp = new javax.swing.JMenuItem();
+        jMenuVendaCliEsp = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,13 +80,70 @@ public class IUPrincipal extends javax.swing.JFrame {
         jMenuRelat.setText("Relatórios");
 
         subMenuRelCli.setText("Relatório de Clientes ");
+
+        jMenuItem1.setText("jMenuItem1");
+        subMenuRelCli.add(jMenuItem1);
+
         jMenuRelat.add(subMenuRelCli);
 
         subMenuRelCorre.setText("Relatório de Corretores ");
+
+        jMenuItem2.setText("jMenuItem2");
+        subMenuRelCorre.add(jMenuItem2);
+
         jMenuRelat.add(subMenuRelCorre);
 
-        subMenuRelVend.setText("Relatório de Vendas ");
+        subMenuRelVend.setText("Relatório de Aluguel e Vendas  ");
         jMenuRelat.add(subMenuRelVend);
+
+        subMenuRelImovel.setText("Relatório de imóveis ");
+
+        jMenuTodosImoveis.setText("Todos Imóveis");
+        jMenuTodosImoveis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuTodosImoveisActionPerformed(evt);
+            }
+        });
+        subMenuRelImovel.add(jMenuTodosImoveis);
+
+        jMenuCasasResid.setText("Casas Residenciais");
+        subMenuRelImovel.add(jMenuCasasResid);
+
+        jMenuApResidencial.setText("Apartamentos Residenciais");
+        subMenuRelImovel.add(jMenuApResidencial);
+
+        jMenuComerciais.setText("Comerciais");
+        jMenuComerciais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuComerciaisActionPerformed(evt);
+            }
+        });
+        subMenuRelImovel.add(jMenuComerciais);
+
+        jMenuImoveisDispAlu.setText("Imóveis Disponíveis (Aluguel)");
+        subMenuRelImovel.add(jMenuImoveisDispAlu);
+
+        jMenuImoveisDispVend.setText("Imóveis Disponíveis (Venda)");
+        subMenuRelImovel.add(jMenuImoveisDispVend);
+
+        jMenuImoveisIndisp.setText("Imóveis Indisponíveis");
+        subMenuRelImovel.add(jMenuImoveisIndisp);
+
+        jMenuImovAtrasoAlug.setText("Imóveis Aluguel Atrasado");
+        subMenuRelImovel.add(jMenuImovAtrasoAlug);
+
+        jMenuAlugCliEsp.setText("Imóveis Alugados Cliente Específico");
+        jMenuAlugCliEsp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuAlugCliEspActionPerformed(evt);
+            }
+        });
+        subMenuRelImovel.add(jMenuAlugCliEsp);
+
+        jMenuVendaCliEsp.setText("Imóveis Comprados Cliente Específico ");
+        subMenuRelImovel.add(jMenuVendaCliEsp);
+
+        jMenuRelat.add(subMenuRelImovel);
 
         jMenuBar1.add(jMenuRelat);
 
@@ -92,6 +162,18 @@ public class IUPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuTodosImoveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuTodosImoveisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuTodosImoveisActionPerformed
+
+    private void jMenuComerciaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuComerciaisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuComerciaisActionPerformed
+
+    private void jMenuAlugCliEspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAlugCliEspActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuAlugCliEspActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,9 +211,21 @@ public class IUPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem jMenuAlugCliEsp;
+    private javax.swing.JMenuItem jMenuApResidencial;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuCadastros;
+    private javax.swing.JMenuItem jMenuCasasResid;
+    private javax.swing.JMenuItem jMenuComerciais;
+    private javax.swing.JMenuItem jMenuImovAtrasoAlug;
+    private javax.swing.JMenuItem jMenuImoveisDispAlu;
+    private javax.swing.JMenuItem jMenuImoveisDispVend;
+    private javax.swing.JMenuItem jMenuImoveisIndisp;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenu jMenuRelat;
+    private javax.swing.JMenuItem jMenuTodosImoveis;
+    private javax.swing.JMenuItem jMenuVendaCliEsp;
     private javax.swing.JMenuItem menuItemApResidencial;
     private javax.swing.JMenuItem menuItemCliente;
     private javax.swing.JMenuItem menuItemComercial;
@@ -140,6 +234,7 @@ public class IUPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu subMenuCadImovel;
     private javax.swing.JMenu subMenuRelCli;
     private javax.swing.JMenu subMenuRelCorre;
+    private javax.swing.JMenu subMenuRelImovel;
     private javax.swing.JMenu subMenuRelVend;
     // End of variables declaration//GEN-END:variables
 }

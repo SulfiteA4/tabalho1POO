@@ -52,16 +52,96 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Relat&#xf3;rio de Clientes "/>
               </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="jMenuItem1"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
             </Menu>
             <Menu class="javax.swing.JMenu" name="subMenuRelCorre">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Relat&#xf3;rio de Corretores "/>
               </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="jMenuItem2"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
             </Menu>
             <Menu class="javax.swing.JMenu" name="subMenuRelVend">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Relat&#xf3;rio de Vendas "/>
+                <Property name="text" type="java.lang.String" value="Relat&#xf3;rio de Aluguel e Vendas  "/>
               </Properties>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="subMenuRelImovel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Relat&#xf3;rio de im&#xf3;veis "/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuTodosImoveis">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Todos Im&#xf3;veis"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuTodosImoveisActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuCasasResid">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Casas Residenciais"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuApResidencial">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Apartamentos Residenciais"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuComerciais">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Comerciais"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuComerciaisActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuImoveisDispAlu">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Im&#xf3;veis Dispon&#xed;veis (Aluguel)"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuImoveisDispVend">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Im&#xf3;veis Dispon&#xed;veis (Venda)"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuImoveisIndisp">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Im&#xf3;veis Indispon&#xed;veis"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuImovAtrasoAlug">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Im&#xf3;veis Aluguel Atrasado"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuAlugCliEsp">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Im&#xf3;veis Alugados Cliente Espec&#xed;fico"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuAlugCliEspActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuVendaCliEsp">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Im&#xf3;veis Comprados Cliente Espec&#xed;fico "/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
             </Menu>
           </SubComponents>
         </Menu>

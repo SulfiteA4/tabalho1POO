@@ -4,6 +4,7 @@
  */
 package modelos;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Lucas
  */
-public class Aluguel {
+public class Aluguel implements Serializable{
     private int codigoAluguel;
     private Cliente cliente;
     private Corretor corretor;
@@ -140,7 +141,11 @@ public class Aluguel {
     }
     
     public boolean verificarAtraso(){
-        return false;
+        if(this.isPago()){
+            return false;
+        }else {
+            return true;
+        }
     }
     
 }

@@ -1,1 +1,2 @@
 - Alteração na classe Usuario para abstract. 
+- Adição dos atributos disponivelVenda e disponivelAluguel à classe Imovel, para identificar quais imoveis estão disponiveis para locação ou venda.

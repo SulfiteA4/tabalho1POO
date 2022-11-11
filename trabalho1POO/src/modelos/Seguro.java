@@ -4,11 +4,13 @@
  */
 package modelos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Lucas
  */
-public class Seguro {
+public class Seguro implements Serializable{
     private int codigoSeguro;
     private String nomeSeguradora;
     private String tipo;

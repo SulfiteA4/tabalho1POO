@@ -234,4 +234,10 @@ public class Controlador {
         IOArquivos arq = new IOArquivos();
         return arq.lerClientes();    
     }
+    
+    public ArrayList<Corretor> getTodosCOrretores(){
+        IOArquivos arq = new IOArquivos(); 
+        return arq.lerCorretores();
+    }
+    
 }

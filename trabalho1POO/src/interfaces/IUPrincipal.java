@@ -95,6 +95,11 @@ public class IUPrincipal extends javax.swing.JFrame {
         jMenuCadastros.add(menuItemCliente);
 
         menuItemCorretor.setText("Cadastro Corretor ");
+        menuItemCorretor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemCorretorActionPerformed(evt);
+            }
+        });
         jMenuCadastros.add(menuItemCorretor);
 
         subMenuCadImovel.setText("Cadastro Imovel ");
@@ -274,6 +279,10 @@ public class IUPrincipal extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         this.setLocationRelativeTo(null);
     }//GEN-LAST:event_formWindowActivated
+
+    private void menuItemCorretorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemCorretorActionPerformed
+        new IUCadastroCorretor().setVisible(true);
+    }//GEN-LAST:event_menuItemCorretorActionPerformed
 
     /**
      * @param args the command line arguments

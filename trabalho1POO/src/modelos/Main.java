@@ -21,9 +21,9 @@ public class Main {
         Imobiliaria imobiliaria = new Imobiliaria();
         imobiliaria.setConfiguracoes(arq.lerConfig());
 
-         IUPrincipal principal = new IUPrincipal();
-         principal.setVisible(true);
-         principal.setTitle("Sistema Imobiliária");
-         principal.toFront();
+        IUPrincipal principal = new IUPrincipal();
+        principal.setVisible(true);
+        principal.setTitle("Sistema Imobiliária");
+        principal.toFront();
     }
 }

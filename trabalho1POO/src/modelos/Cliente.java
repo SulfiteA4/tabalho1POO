@@ -2,6 +2,7 @@
 package modelos;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -26,7 +27,17 @@ public class Cliente extends Usuario {
 
     @Override
     public String toString() {  
-        return "Cliente{" + "codigoUsuario=" + codigoUsuario + ", nome=" + nome + ", cpf=" + cpf + ", rg=" + rg + ", dataNascimento=" + dataNascimento + ", endereco=" + endereco + ", cep=" + cep + ", telefone=" + telefone + ", email=" + email +", dataCadastro=" + dataCadastro + '}';
+        return "\nCliente: " + 
+               "\n\tCodigo: " + codigoUsuario + 
+               "\n\tNome: " + nome + 
+               "\n\tCPF: " + cpf + 
+               "\n\tRG: " + rg + 
+               "\n\tData de Nascimento: " + dataNascimento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) +
+               "\n\tEndereco: " + endereco +
+               "\n\tCEP: " + cep +
+               "\n\tTelefone: " + telefone + 
+               "\n\tEmail: " + email +
+               "\n\tData do Cadastro: " + dataCadastro.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
     
    

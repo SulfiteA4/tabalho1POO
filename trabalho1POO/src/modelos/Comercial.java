@@ -5,6 +5,7 @@
 package modelos;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -33,9 +34,21 @@ public class Comercial extends Imovel{
     }
     
     
-    @Override
+@Override
     public String toString() {
-        return "Comercial{" + "codigoImovel=" + codigoImovel + ", endereco=" + endereco + ", dataConstrucao=" + dataConstrucao + ", areaTotal=" + areaTotal + ", areaConstruida=" + areaConstruida + ", qtdDormitorios=" + qtdDormitorios + ", qtdBanheiros=" + qtdBanheiros + ", qtdVagasGaragem=" + qtdVagasGaragem + ", valorIptu=" + valorIptu + ", valorVenda=" + valorVenda + ", valorAluguel=" + valorAluguel + "taxaImpostoFederal=" + taxaImpostoFederal + '}';
+        return "\nComercial: " + 
+               "\n\tCodigo: " + codigoImovel +
+               "\n\tEndereco: " + endereco + 
+               "\n\tData da Construcao: " + dataConstrucao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) +
+               "\n\tArea Total: " + areaTotal + 
+               "\n\tArea Construida: " + areaConstruida +
+               "\n\tQuantidade de Dormitorios: " + qtdDormitorios + 
+               "\n\tQuantidade de Banheiros: " + qtdBanheiros + 
+               "\n\tVagas de garagem: " + qtdVagasGaragem + 
+               "\n\tTaxa do Imposto Federal: " + taxaImpostoFederal +
+               "\n\tValor do IPTU: R$ " + valorIptu +
+               "\n\tValor de Venda: R$ " + valorVenda + 
+               "\n\tValor do Aluguel: R$ " + valorAluguel;
     }
     
     

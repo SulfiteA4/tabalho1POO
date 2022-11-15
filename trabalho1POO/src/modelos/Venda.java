@@ -5,6 +5,7 @@
 package modelos;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -87,7 +88,14 @@ public class Venda {
 
     @Override
     public String toString() {
-        return "Venda{" + "codigoVenda=" + codigoVenda + ", cliente=" + cliente + ", corretor=" + corretor + ", imovel=" + imovel + ", dataVenda=" + dataVenda + ", valorTotalVenda=" + valorTotalVenda + ", formaPagamento=" + formaPagamento + '}';
+        return "\nVenda: " + 
+                "\n\tCodigo: " + codigoVenda +
+                "\n\t" + cliente +
+                "\n\t" + corretor +
+                "\n\t" + imovel + 
+                "\n\tData da Venda: " + dataVenda.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + 
+                "\n\tValor Total da Venda: R$" + valorTotalVenda + 
+                "\n\tForma de Pagamento: " + formaPagamento ;
     }
     
     

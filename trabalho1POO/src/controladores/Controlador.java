@@ -184,7 +184,7 @@ public class Controlador {
             return null;
         }else{
             for(int i = 0; i < todosOsImoveis.size(); i++){
-                if(todosOsImoveis.get(i).isDisponivelAluguel()== false && todosOsImoveis.get(i).isDisponivelVenda()== false ){
+                if(todosOsImoveis.get(i).isDisponivelAluguel()== false || todosOsImoveis.get(i).isDisponivelVenda()== false ){
                     imoveisIndisponiveis.add(todosOsImoveis.get(i));
                 }   
             }
@@ -228,7 +228,40 @@ public class Controlador {
         }
     }
     
-    //9.
+    //9. Listar todos os Imóveis já alugados por um Cliente em específico.
+    public ArrayList<Imovel> listaImoveisAlugadosClienteEspecifico(int codigoCliente){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Aluguel> todosAlugueis = arq.lerAlugueis();
+        ArrayList<Imovel> imoveisDoCliente = new ArrayList();
+        if(todosAlugueis == null){
+            return null;
+        }else{
+            for(int i = 0; i < todosAlugueis.size() ; i++){
+                if(todosAlugueis.get(i).getCliente().getCodigoUsuario() == codigoCliente){
+                    imoveisDoCliente.add(todosAlugueis.get(i).getImovel());
+                }
+            }
+            return imoveisDoCliente;
+        }
+    }
+    
+    //10. Listar todos os Imóveis já comprados por um Cliente em específico.
+    public ArrayList<Imovel> listaImoveisCompradosClienteEspecifico(int codigoCliente){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Venda> todasVendas = arq.lerVendas();
+        ArrayList<Imovel> imoveisDoCliente = new ArrayList();
+        if(todasVendas == null){
+            return null;
+        }else{
+            for(int i = 0; i < todasVendas.size() ; i++){
+                if(todasVendas.get(i).getCliente().getCodigoUsuario() == codigoCliente){
+                    imoveisDoCliente.add(todasVendas.get(i).getImovel());
+                }
+            }
+            return imoveisDoCliente;
+        }
+    }
+    
     
     public ArrayList<Cliente> getTodosClientes(){
         IOArquivos arq = new IOArquivos();

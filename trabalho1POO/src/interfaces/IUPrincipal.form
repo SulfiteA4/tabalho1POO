@@ -58,6 +58,14 @@
                 <Property name="text" type="java.lang.String" value="Cadastro Venda "/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemSeguro">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cadastro Seguro"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemSeguroActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenuRelat">

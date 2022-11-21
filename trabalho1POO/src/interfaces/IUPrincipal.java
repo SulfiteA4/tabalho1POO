@@ -34,6 +34,7 @@ public class IUPrincipal extends javax.swing.JFrame {
         menuItemApResidencial = new javax.swing.JMenuItem();
         menuItemComercial = new javax.swing.JMenuItem();
         menuItemVenda = new javax.swing.JMenuItem();
+        menuItemSeguro = new javax.swing.JMenuItem();
         jMenuRelat = new javax.swing.JMenu();
         subMenuRelCli = new javax.swing.JMenu();
         jMenuClientes = new javax.swing.JMenuItem();
@@ -114,6 +115,14 @@ public class IUPrincipal extends javax.swing.JFrame {
 
         menuItemVenda.setText("Cadastro Venda ");
         jMenuCadastros.add(menuItemVenda);
+
+        menuItemSeguro.setText("Cadastro Seguro");
+        menuItemSeguro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemSeguroActionPerformed(evt);
+            }
+        });
+        jMenuCadastros.add(menuItemSeguro);
 
         jMenuBar1.add(jMenuCadastros);
 
@@ -284,6 +293,10 @@ public class IUPrincipal extends javax.swing.JFrame {
         new IUCadastroCorretor().setVisible(true);
     }//GEN-LAST:event_menuItemCorretorActionPerformed
 
+    private void menuItemSeguroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSeguroActionPerformed
+        new IUCadastroSeguro().setVisible(true);
+    }//GEN-LAST:event_menuItemSeguroActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -355,6 +368,7 @@ public class IUPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemCliente;
     private javax.swing.JMenuItem menuItemComercial;
     private javax.swing.JMenuItem menuItemCorretor;
+    private javax.swing.JMenuItem menuItemSeguro;
     private javax.swing.JMenuItem menuItemVenda;
     private javax.swing.JMenu subMenuCadImovel;
     private javax.swing.JMenu subMenuRelCli;

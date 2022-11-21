@@ -5,6 +5,7 @@
 package controladores;
 
 import Arquivos.IOArquivos;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelos.Aluguel;
@@ -314,16 +315,85 @@ public class Controlador {
     }
     
     //17. Listar todos os Alugueis finalizados, ou seja, que já concluíram contrato e foram devolvidos.
-//    public ArrayList<Aluguel> listaAlugueisFinalizados(){;;
-//        IOArquivos arq = new IOArquivos();
-//        ArrayList<Aluguel> todosAlugueis = arq.lerAlugueis();
-//        ArrayList<Aluguel> alugueisFinalizados = new ArrayList();
-//        
-//        for(int i = 0; i < todosAlugueis.size(); i++){
-//            
-//        }
-//    }
+    public ArrayList<Aluguel> listaAlugueisFinalizados(){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Aluguel> todosAlugueis = arq.lerAlugueis();
+        ArrayList<Aluguel> alugueisFinalizados = new ArrayList();
+        LocalDate dataAtual = LocalDate.now();
+        
+        for(int i = 0; i < todosAlugueis.size(); i++){
+            if( todosAlugueis.get(i).getDataDevolucao().isBefore(dataAtual)){
+                alugueisFinalizados.add(todosAlugueis.get(i));
+            }
+        }
+        return alugueisFinalizados;
+    }
     
+    //18. Listar todos os Alugueis não finalizados, ou seja, ainda dentro do prazo de locação.
+    public ArrayList<Aluguel> listaAlugueisNaoFinalizados(){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Aluguel> todosAlugueis = arq.lerAlugueis();
+        ArrayList<Aluguel> alugueisNaoFinalizados = new ArrayList();
+        LocalDate dataAtual = LocalDate.now();
+        
+        for(int i = 0; i < todosAlugueis.size(); i++){
+            if(( todosAlugueis.get(i).getDataDevolucao().isAfter(dataAtual))){
+                alugueisNaoFinalizados.add(todosAlugueis.get(i));
+            }
+        }
+        return alugueisNaoFinalizados;
+    }
+    
+    //19. Listar todos as Casas Residenciais alugadas com contrato ainda vigente.
+    
+    public ArrayList<CasaResidencial> listaCasasResidenciaisContratoVigente(){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Aluguel> todosAlugueis = arq.lerAlugueis();
+        ArrayList<CasaResidencial> casasResidenciaisContratoVigente = new ArrayList();
+        LocalDate dataAtual = LocalDate.now();
+        
+        for(int i = 0; i < todosAlugueis.size(); i++){
+            if(todosAlugueis.get(i).getImovel() instanceof CasaResidencial){
+                if (todosAlugueis.get(i).getDataDevolucao().isAfter(dataAtual)){
+                    casasResidenciaisContratoVigente.add((CasaResidencial)todosAlugueis.get(i).getImovel());
+                }
+            }
+        }
+        return casasResidenciaisContratoVigente;
+    }
+    
+    //20. Listar todos os Apartamentos Residenciais alugadas com contrato ainda vigente.
+    public ArrayList<ApartamentoResidencial> listaApartamentosResidenciaisContratoVigente(){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Aluguel> todosAlugueis = arq.lerAlugueis();
+        ArrayList<ApartamentoResidencial> ApartamentosResidenciaisContratoVigente = new ArrayList();
+        LocalDate dataAtual = LocalDate.now();
+        
+        for(int i = 0; i < todosAlugueis.size(); i++){
+            if(todosAlugueis.get(i).getImovel() instanceof ApartamentoResidencial){
+                if (todosAlugueis.get(i).getDataDevolucao().isAfter(dataAtual)){
+                    ApartamentosResidenciaisContratoVigente.add((ApartamentoResidencial)todosAlugueis.get(i).getImovel());
+                }
+            }
+        }
+        return ApartamentosResidenciaisContratoVigente;
+    }
+
+    //21. Listar todos os Estabelecimentos Comerciais alugadas com contrato ainda vigente.
+    public ArrayList<Comercial> listaComerciaisContratoVigente(){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Aluguel> todosAlugueis = arq.lerAlugueis();
+        ArrayList<Comercial> ComercialContratoVigente = new ArrayList();
+        LocalDate dataAtual = LocalDate.now();
+        
+        for(int i = 0; i < todosAlugueis.size(); i++){
+            if(todosAlugueis.get(i).getImovel() instanceof Comercial){
+                if (todosAlugueis.get(i).getDataDevolucao().isAfter(dataAtual)){
+                    ComercialContratoVigente.add((Comercial)todosAlugueis.get(i).getImovel());
+                }
+            }
+        }
+        return ComercialContratoVigente;
     }
     
     public ArrayList<Corretor> getTodosCOrretores(){
@@ -331,4 +401,70 @@ public class Controlador {
         return arq.lerCorretores();
     }
     
+    //Buscas de cliente/corretor/imovel/seguro Especifico
+    public Cliente buscaClientePorCodigo(int codigo){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Cliente> todosClientes = arq.lerClientes();
+        if(todosClientes == null){
+            JOptionPane.showMessageDialog(null, "Ainda não existem Clientes Cadastrados!");
+        }else {
+            for(int i = 0; i < todosClientes.size(); i++){
+                if (todosClientes.get(i).getCodigoUsuario() == codigo){
+                    return todosClientes.get(i);
+                }
+            }
+        }
+        return null;
+    }
+    
+    public Corretor buscaCorretorPorCodigo(int codigo){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Corretor> todosCorretores = arq.lerCorretores();
+        if(todosCorretores == null){
+            JOptionPane.showMessageDialog(null, "Ainda não existem Corretores Cadastrados!");
+        }else {
+            for(int i = 0; i < todosCorretores.size(); i++){
+                if (todosCorretores.get(i).getCodigoUsuario() == codigo){
+                    return todosCorretores.get(i);
+                }
+            }
+        }
+        return null;
+    }   
+    
+    public Imovel buscaImovelPorCodigo(int codigo){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Imovel> todosImoveis = arq.lerImoveis();
+        if(todosImoveis == null){
+            JOptionPane.showMessageDialog(null, "Ainda não existem Imoveis Cadastrados!");
+        }else {
+            for(int i = 0; i < todosImoveis.size(); i++){
+                if (todosImoveis.get(i).getCodigoImovel() == codigo){
+                    return todosImoveis.get(i);
+                }
+            }
+        }
+        return null;
+    }   
+    
+    public Seguro buscaSeguroPorCodigo(int codigo){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Seguro> todosSeguros = arq.lerSeguros();
+        if(todosSeguros == null){
+            JOptionPane.showMessageDialog(null, "Ainda não existem seguros Cadastrados!");
+        }else {
+            for(int i = 0; i < todosSeguros.size(); i++){
+                if (todosSeguros.get(i).getCodigoSeguro() == codigo){
+                    return todosSeguros.get(i);
+                }
+            }
+        }
+        return null;
+    }   
+    
+    
 }
+    
+
+    
+

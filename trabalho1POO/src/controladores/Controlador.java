@@ -324,11 +324,75 @@ public class Controlador {
 //        }
 //    }
     
-    }
-    
     public ArrayList<Corretor> getTodosCOrretores(){
         IOArquivos arq = new IOArquivos(); 
         return arq.lerCorretores();
     }
     
+    //Buscas de cliente/corretor/imovel/seguro Especifico
+    public Cliente buscaClientePorCodigo(int codigo){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Cliente> todosClientes = arq.lerClientes();
+        if(todosClientes == null){
+            JOptionPane.showMessageDialog(null, "Ainda nao existem Clientes Cadastrados!");
+        }else {
+            for(int i = 0; i < todosClientes.size(); i++){
+                if (todosClientes.get(i).getCodigoUsuario() == codigo){
+                    return todosClientes.get(i);
+                }
+            }
+        }
+        return null;
+    }
+    
+    public Corretor buscaCorretorPorCodigo(int codigo){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Corretor> todosCorretores = arq.lerCorretores();
+        if(todosCorretores == null){
+            JOptionPane.showMessageDialog(null, "Ainda nao existem Corretores Cadastrados!");
+        }else {
+            for(int i = 0; i < todosCorretores.size(); i++){
+                if (todosCorretores.get(i).getCodigoUsuario() == codigo){
+                    return todosCorretores.get(i);
+                }
+            }
+        }
+        return null;
+    }   
+    
+    public Imovel buscaImovelPorCodigo(int codigo){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Imovel> todosImoveis = arq.lerImoveis();
+        if(todosImoveis == null){
+            JOptionPane.showMessageDialog(null, "Ainda nao existem Imoveis Cadastrados!");
+        }else {
+            for(int i = 0; i < todosImoveis.size(); i++){
+                if (todosImoveis.get(i).getCodigoImovel() == codigo){
+                    return todosImoveis.get(i);
+                }
+            }
+        }
+        return null;
+    }   
+    
+    public Seguro buscaSeguroPorCodigo(int codigo){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Seguro> todosSeguros = arq.lerSeguros();
+        if(todosSeguros == null){
+            JOptionPane.showMessageDialog(null, "Ainda nao existem seguros Cadastrados!");
+        }else {
+            for(int i = 0; i < todosSeguros.size(); i++){
+                if (todosSeguros.get(i).getCodigoSeguro() == codigo){
+                    return todosSeguros.get(i);
+                }
+            }
+        }
+        return null;
+    }   
+    
+    
 }
+    
+
+    
+

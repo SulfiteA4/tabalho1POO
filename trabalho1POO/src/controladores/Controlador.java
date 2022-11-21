@@ -396,6 +396,33 @@ public class Controlador {
         return ComercialContratoVigente;
     }
     
+    //22. Listar todas as Vendas realizadas.
+    public ArrayList<Venda> listaTodasVendas(){
+        IOArquivos arq = new IOArquivos();
+        return arq.lerVendas();
+    }
+    
+    //23. Listar Vendas realizadas em um mês em específico
+    public ArrayList<Venda> listaTodasVendasMes(int mes){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Venda> todasVendas = arq.lerVendas();
+        ArrayList<Venda> vendasMes = new ArrayList();
+        
+        for(int i = 0; i < todasVendas.size(); i++){
+            if(todasVendas.get(i).getDataVenda().getMonthValue() == mes){
+                vendasMes.add(todasVendas.get(i));
+            }
+        }
+        return vendasMes;
+        
+    }    
+    
+    //24. Listar todos os tipos de Seguros cadastrados.
+    public ArrayList<Seguro> listaTodosSeguros(){
+        IOArquivos arq = new IOArquivos();
+        return arq.lerSeguros();
+    }
+    
     public ArrayList<Corretor> getTodosCOrretores(){
         IOArquivos arq = new IOArquivos(); 
         return arq.lerCorretores();

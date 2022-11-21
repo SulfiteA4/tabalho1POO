@@ -324,11 +324,12 @@ public class Controlador {
 //        }
 //    }
     
-    }
-    
     public ArrayList<Corretor> getTodosCOrretores(){
         IOArquivos arq = new IOArquivos(); 
         return arq.lerCorretores();
     }
-    
 }
+    
+    
+    
+

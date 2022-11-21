@@ -59,8 +59,9 @@ public class IUCadastroCorretor extends javax.swing.JFrame {
         txtSalario = new javax.swing.JFormattedTextField();
         txtDataAdmissao = new javax.swing.JFormattedTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
 
         lblCadastroCorretpr.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         lblCadastroCorretpr.setForeground(new java.awt.Color(0, 0, 0));
@@ -136,7 +137,7 @@ public class IUCadastroCorretor extends javax.swing.JFrame {
         jLabel9.setText("Data Nascimento");
 
         try {
-            txtDadaNascCorretor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
+            txtDadaNascCorretor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -169,7 +170,7 @@ public class IUCadastroCorretor extends javax.swing.JFrame {
         Salário.setText("Salário");
 
         try {
-            txtDataAdmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
+            txtDataAdmissao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -339,8 +340,8 @@ public class IUCadastroCorretor extends javax.swing.JFrame {
         String pis = txtPISCorretor.getText();
         float salario = Float.parseFloat(txtSalario.getText());
         
-        LocalDate dateNasc =  LocalDate.parse(dataNasc,DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-        LocalDate dateAdmissao = LocalDate.parse(dataAdmissao,DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        LocalDate dateNasc =  LocalDate.parse(dataNasc,DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        LocalDate dateAdmissao = LocalDate.parse(dataAdmissao,DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         Corretor corretores = new Corretor(creci, salario, pis, dateAdmissao, codigo, nome, cpf, rg, 
         dateNasc, endereco, cep, telefone, email);
         

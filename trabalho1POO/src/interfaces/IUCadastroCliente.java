@@ -56,6 +56,7 @@ public class IUCadastroCliente extends javax.swing.JFrame {
         txtDataCad = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         lblCadastroCliente.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         lblCadastroCliente.setForeground(new java.awt.Color(0, 0, 0));
@@ -125,7 +126,7 @@ public class IUCadastroCliente extends javax.swing.JFrame {
         jLabel9.setText("Data Nascimento");
 
         try {
-            txtDadaNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
+            txtDadaNasc.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -147,7 +148,7 @@ public class IUCadastroCliente extends javax.swing.JFrame {
         });
 
         try {
-            txtDataCad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##-##-####")));
+            txtDataCad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -279,8 +280,8 @@ public class IUCadastroCliente extends javax.swing.JFrame {
         String cep = txtCEP.getText(); 
         String telefone =  txtTelefone.getText(); 
         
-        LocalDate dateNasc =  LocalDate.parse(dataNasc,DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-        LocalDate dateCad = LocalDate.parse(dataCadastro,DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        LocalDate dateNasc =  LocalDate.parse(dataNasc,DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        LocalDate dateCad = LocalDate.parse(dataCadastro,DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         //JOptionPane.showMessageDialog(null, dateNasc.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
         //JOptionPane.showMessageDialog(null, dateCad.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
         Cliente cliente = new Cliente(dateCad, codigo, nome, cpf, rg, dateNasc, endereco, cep, telefone, email);

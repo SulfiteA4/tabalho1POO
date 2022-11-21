@@ -34,6 +34,7 @@ public class IUPrincipal extends javax.swing.JFrame {
         menuItemApResidencial = new javax.swing.JMenuItem();
         menuItemComercial = new javax.swing.JMenuItem();
         menuItemVenda = new javax.swing.JMenuItem();
+        menuItemAluguel = new javax.swing.JMenuItem();
         menuItemSeguro = new javax.swing.JMenuItem();
         jMenuRelat = new javax.swing.JMenu();
         subMenuRelCli = new javax.swing.JMenu();
@@ -71,6 +72,7 @@ public class IUPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 10)); // NOI18N
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -114,7 +116,16 @@ public class IUPrincipal extends javax.swing.JFrame {
         jMenuCadastros.add(subMenuCadImovel);
 
         menuItemVenda.setText("Cadastro Venda ");
+        menuItemVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemVendaActionPerformed(evt);
+            }
+        });
         jMenuCadastros.add(menuItemVenda);
+
+
+        menuItemAluguel.setText("Cadastro Locação");
+        jMenuCadastros.add(menuItemAluguel);
 
         menuItemSeguro.setText("Cadastro Seguro");
         menuItemSeguro.addActionListener(new java.awt.event.ActionListener() {
@@ -123,6 +134,7 @@ public class IUPrincipal extends javax.swing.JFrame {
             }
         });
         jMenuCadastros.add(menuItemSeguro);
+
 
         jMenuBar1.add(jMenuCadastros);
 
@@ -293,9 +305,15 @@ public class IUPrincipal extends javax.swing.JFrame {
         new IUCadastroCorretor().setVisible(true);
     }//GEN-LAST:event_menuItemCorretorActionPerformed
 
+
+    private void menuItemVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemVendaActionPerformed
+        new IUCadastroVenda().setVisible(true);
+    }//GEN-LAST:event_menuItemVendaActionPerformed
+
     private void menuItemSeguroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSeguroActionPerformed
         new IUCadastroSeguro().setVisible(true);
     }//GEN-LAST:event_menuItemSeguroActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -364,6 +382,7 @@ public class IUPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JMenuItem menuItemAluguel;
     private javax.swing.JMenuItem menuItemApResidencial;
     private javax.swing.JMenuItem menuItemCliente;
     private javax.swing.JMenuItem menuItemComercial;

@@ -329,6 +329,7 @@ public class Controlador {
         return alugueisFinalizados;
     }
     
+
     //18. Listar todos os Alugueis não finalizados, ou seja, ainda dentro do prazo de locação.
     public ArrayList<Aluguel> listaAlugueisNaoFinalizados(){
         IOArquivos arq = new IOArquivos();
@@ -423,10 +424,15 @@ public class Controlador {
         return arq.lerSeguros();
     }
     
+
     public ArrayList<Corretor> getTodosCOrretores(){
         IOArquivos arq = new IOArquivos(); 
         return arq.lerCorretores();
     }
+
+}
+    
+    
     
     //Buscas de cliente/corretor/imovel/seguro Especifico
     public Cliente buscaClientePorCodigo(int codigo){
@@ -492,6 +498,7 @@ public class Controlador {
     
 }
     
+
 
     
 

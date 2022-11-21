@@ -5,6 +5,7 @@
 package modelos;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -58,7 +59,20 @@ public class Corretor extends Usuario{
 
     @Override
     public String toString() {
-        return "Corretor{" + "codigoUsuario=" + codigoUsuario + ", nome=" + nome + ", cpf=" + cpf + ", rg=" + rg + ", dataNascimento=" + dataNascimento + ", endereco=" + endereco + ", cep=" + cep + ", telefone=" + telefone + ", email=" + email +", creci=" + creci + ", salario=" + salario + ", pis=" + pis + ", dataAdmissao=" + dataAdmissao + '}';
+        return "\n\tCorretor: " + 
+               "\n\tCodigo: " + codigoUsuario + 
+               "\n\tNome: " + nome +
+               "\n\tCPF: " + cpf +
+               "\n\tRG: " + rg +
+               "\n\tData de Nascimento: " + dataNascimento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) +
+               "\n\tEndereco: " + endereco + 
+               "\n\tCEP" + cep +
+               "\n\tTelefone: " + telefone +
+               "\n\tEmail: " + email +
+               "\n\tCreci: " + creci + 
+               "\n\tSalario: R$ " + salario + 
+               "\n\tPIS: " + pis + 
+               "\n\tData de Admissao: " + dataAdmissao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
     
     

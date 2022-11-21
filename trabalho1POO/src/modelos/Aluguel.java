@@ -6,6 +6,7 @@ package modelos;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
@@ -129,7 +130,18 @@ public class Aluguel implements Serializable{
     //depois temos que ver esse to string que retorna um ArrayList
     @Override
     public String toString() {
-        return "Aluguel{" + "codigoAluguel=" + codigoAluguel + ", cliente=" + cliente + ", corretor=" + corretor + ", imovel=" + imovel + ", dataAluguel=" + dataAluguel + ", dataDevolucao=" + dataDevolucao + ", dataPagamentoMensal=" + dataPagamentoMensal + ", valorTotalAluguel=" + valorTotalAluguel + ", formaPagamento=" + formaPagamento + ", segurosContratados=" + segurosContratados + ", pago=" + pago + '}';
+        return "\nAluguel:" + 
+               "\n\tCodigo: " + codigoAluguel +
+               "\n\t" + cliente + 
+               "\n\t" + corretor +
+               "\n\t" + imovel + 
+               "\n\tData do Aluguel: " + dataAluguel.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) +
+               "\n\tData de Devolucao: " + dataDevolucao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + 
+               "\n\tData de Pagamento Mensal: " + dataPagamentoMensal.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + 
+               "\n\tValor Total Aluguel: R$ " + valorTotalAluguel + 
+               "\n\tForma de Pagamento: " + formaPagamento + 
+               "\n\tSeguros Contratados: " + segurosContratados + 
+               "\n\tPago: "+ ((this.pago)?"SIM":"NAO");
     }
     //para as funções que ainda não criamos coloquei um retorno ppadrao só pra não dar erro.
     public float calcularValorTotal(){

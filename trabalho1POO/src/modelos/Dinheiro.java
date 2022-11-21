@@ -16,7 +16,7 @@ public class Dinheiro extends Pagamento{
     
     @Override
     public String toString() {
-        return "Dinheiro{" + '}';
+        return "Dinheiro";
     }
     
 }

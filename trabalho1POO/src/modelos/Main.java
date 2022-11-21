@@ -20,10 +20,13 @@ public class Main {
         IOArquivos arq = new IOArquivos();
         Imobiliaria imobiliaria = new Imobiliaria();
         imobiliaria.setConfiguracoes(arq.lerConfig());
+        
+        Controlador control1 = new Controlador();
+        System.out.println(control1.getTodosClientes());
 
-         IUPrincipal principal = new IUPrincipal();
-         principal.setVisible(true);
-         principal.setTitle("Sistema Imobiliária");
-         principal.toFront();
+        IUPrincipal principal = new IUPrincipal();
+        principal.setVisible(true);
+        principal.setTitle("Sistema Imobiliária");
+        principal.toFront();
     }
 }

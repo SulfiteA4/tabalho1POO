@@ -184,7 +184,7 @@ public class Controlador {
             return null;
         }else{
             for(int i = 0; i < todosOsImoveis.size(); i++){
-                if(todosOsImoveis.get(i).isDisponivelAluguel()== false && todosOsImoveis.get(i).isDisponivelVenda()== false ){
+                if(todosOsImoveis.get(i).isDisponivelAluguel()== false || todosOsImoveis.get(i).isDisponivelVenda()== false ){
                     imoveisIndisponiveis.add(todosOsImoveis.get(i));
                 }   
             }
@@ -228,11 +228,102 @@ public class Controlador {
         }
     }
     
-    //9.
+    //9. Listar todos os Imóveis já alugados por um Cliente em específico.
+    public ArrayList<Imovel> listaImoveisAlugadosClienteEspecifico(int codigoCliente){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Aluguel> todosAlugueis = arq.lerAlugueis();
+        ArrayList<Imovel> imoveisDoCliente = new ArrayList();
+        if(todosAlugueis == null){
+            return null;
+        }else{
+            for(int i = 0; i < todosAlugueis.size() ; i++){
+                if(todosAlugueis.get(i).getCliente().getCodigoUsuario() == codigoCliente){
+                    imoveisDoCliente.add(todosAlugueis.get(i).getImovel());
+                }
+            }
+            return imoveisDoCliente;
+        }
+    }
     
+    //10. Listar todos os Imóveis já comprados por um Cliente em específico.
+    public ArrayList<Imovel> listaImoveisCompradosClienteEspecifico(int codigoCliente){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Venda> todasVendas = arq.lerVendas();
+        ArrayList<Imovel> imoveisDoCliente = new ArrayList();
+        if(todasVendas == null){
+            return null;
+        }else{
+            for(int i = 0; i < todasVendas.size() ; i++){
+                if(todasVendas.get(i).getCliente().getCodigoUsuario() == codigoCliente){
+                    imoveisDoCliente.add(todasVendas.get(i).getImovel());
+                }
+            }
+            return imoveisDoCliente;
+        }
+    }
+    
+    //11. Listar todos os Corretores cadastrados.
+    public ArrayList<Corretor> listarTodosOsCorretores(){
+        IOArquivos arq = new IOArquivos();
+        return arq.lerCorretores();
+    }
+    
+    //12.  Listar o Corretores ganhadores do funcionário do mês, ou seja, os corretores que mais alugueis ou vendas realizaram em cada um dos meses.
+    public Corretor corretorFuncionarioDoMes(String mes){
+        return null;
+    }
+    
+    //13.  Listar todos os Clientes cadastrados.
     public ArrayList<Cliente> getTodosClientes(){
         IOArquivos arq = new IOArquivos();
         return arq.lerClientes();    
+    }
+    
+    //14. Listar o histórico de compras, imóveis comprados por um Cliente em específico.
+    public ArrayList<Venda> listaHistoricoComprasClienteEspecifico(Cliente cliente){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Venda> todasVendas = arq.lerVendas();
+        ArrayList<Venda> historico = new ArrayList();
+        for(int i = 0; i < todasVendas.size(); i++){
+            if(todasVendas.get(i).getCliente() == cliente){
+                historico.add(todasVendas.get(i));
+                
+            }
+        }
+        return historico;
+    }
+    
+    //15. Listar Clientes com alugueis em atraso.
+    public ArrayList<Cliente> listaClientesComAlugueisAtrasados(){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Aluguel> todosAlugueis = arq.lerAlugueis();
+        ArrayList<Cliente> clientesAtrasados = new ArrayList();
+        
+        for(int i = 0; i < todosAlugueis.size(); i++){
+            if(todosAlugueis.get(i).verificarAtraso()){
+                clientesAtrasados.add(todosAlugueis.get(i).getCliente());
+            }
+        }
+        return clientesAtrasados;
+    }
+    
+    //16. Listar todos os Alugueis (Locações) realizados finalizados ou não.
+    public ArrayList<Aluguel> listaTodosOsAlugueis(){
+        IOArquivos arq = new IOArquivos();
+        return arq.lerAlugueis();
+    }
+    
+    //17. Listar todos os Alugueis finalizados, ou seja, que já concluíram contrato e foram devolvidos.
+//    public ArrayList<Aluguel> listaAlugueisFinalizados(){;;
+//        IOArquivos arq = new IOArquivos();
+//        ArrayList<Aluguel> todosAlugueis = arq.lerAlugueis();
+//        ArrayList<Aluguel> alugueisFinalizados = new ArrayList();
+//        
+//        for(int i = 0; i < todosAlugueis.size(); i++){
+//            
+//        }
+//    }
+    
     }
     
     public ArrayList<Corretor> getTodosCOrretores(){

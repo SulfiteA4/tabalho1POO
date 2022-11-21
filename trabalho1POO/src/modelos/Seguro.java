@@ -67,7 +67,12 @@ public class Seguro implements Serializable{
 
     @Override
     public String toString() {
-        return "Seguro{" + "codigoSeguro=" + codigoSeguro + ", nomeSeguradora=" + nomeSeguradora + ", tipo=" + tipo + ", descricao=" + descricao + ", valor=" + valor + '}';
+        return "\nSeguro: " +
+               "\n\tCodigo: " + codigoSeguro +
+               "\n\tSeguradora: " + nomeSeguradora + 
+               "\n\tTipo: " + tipo + 
+               "\n\tDescricao: " + descricao + 
+               "\n\tValor: R$" + valor ;
     }
     
     

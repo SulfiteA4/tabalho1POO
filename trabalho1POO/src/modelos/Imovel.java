@@ -150,7 +150,18 @@ public class Imovel implements Serializable{
 
     @Override
     public String toString() {
-        return "Imoveis{" + "codigoImovel=" + codigoImovel + ", endereco=" + endereco + ", dataConstrucao=" + dataConstrucao + ", areaTotal=" + areaTotal + ", areaConstruida=" + areaConstruida + ", qtdDormitorios=" + qtdDormitorios + ", qtdBanheiros=" + qtdBanheiros + ", qtdVagasGaragem=" + qtdVagasGaragem + ", valorIptu=" + valorIptu + ", valorVenda=" + valorVenda + ", valorAluguel=" + valorAluguel + '}';
+        return "\nImoveis: " + 
+               "\n\tCodigo: " + codigoImovel +
+               "\n\tEndereco: " + endereco + 
+               "\n\tData da Construcao: " + dataConstrucao +
+               "\n\tArea Total: " + areaTotal + 
+               "\n\tArea Construída: " + areaConstruida +
+               "\n\tQuantidade de Dormitorios: " + qtdDormitorios + 
+               "\n\tQuantidade de Banheiros: " + qtdBanheiros + 
+               "\n\tVagas de garagem: " + qtdVagasGaragem + 
+               "\n\tValor do IPTU: R$ " + valorIptu +
+               "\n\tValor de Venda: R$ " + valorVenda + 
+               "\n\tValor do Aluguel: R$ " + valorAluguel;
     }
     
     

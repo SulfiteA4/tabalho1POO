@@ -23,7 +23,10 @@ public class Cartao extends Pagamento {
     
     @Override
     public String toString(){
-        return "Cartao: Nome:" + nome + "Bandeira: " + bandeira + "Numero:" + numero;
+        return "\nCartao: "+
+               "\n\tNome: " + nome + 
+               "\n\tBandeira: " + bandeira +
+               "\n\tNumero: " + numero;
     }
     
 }

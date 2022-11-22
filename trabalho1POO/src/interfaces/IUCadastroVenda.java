@@ -4,6 +4,13 @@
  */
 package interfaces;
 
+import controladores.Controlador;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
+import modelos.Cartao;
+import modelos.Venda;
+
 /**
  *
  * @author Martines
@@ -39,7 +46,6 @@ public class IUCadastroVenda extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txtDataVenda = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtValorTotal = new javax.swing.JFormattedTextField();
         jPanel1 = new javax.swing.JPanel();
         jBtnCartão = new javax.swing.JRadioButton();
         jBtnDinheiro = new javax.swing.JRadioButton();
@@ -50,6 +56,7 @@ public class IUCadastroVenda extends javax.swing.JFrame {
         txtBandeira = new javax.swing.JTextField();
         TxtNumeroCartao = new javax.swing.JTextField();
         btnCadastroVendas = new javax.swing.JButton();
+        txtValorTotal = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -107,19 +114,17 @@ public class IUCadastroVenda extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         jLabel5.setText("Valor Total");
 
-        txtValorTotal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,###.00"))));
-        txtValorTotal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtValorTotalActionPerformed(evt);
-            }
-        });
-
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Métodos de Pagamento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial Rounded MT Bold", 0, 12))); // NOI18N
         jPanel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
 
         buttonGroupPagamento.add(jBtnCartão);
         jBtnCartão.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         jBtnCartão.setText("Cartão");
+        jBtnCartão.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtnCartãoMouseClicked(evt);
+            }
+        });
         jBtnCartão.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnCartãoActionPerformed(evt);
@@ -144,6 +149,12 @@ public class IUCadastroVenda extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         jLabel8.setText("Número:");
+
+        txtNomeCartao.setEnabled(false);
+
+        txtBandeira.setEnabled(false);
+
+        TxtNumeroCartao.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -176,9 +187,8 @@ public class IUCadastroVenda extends javax.swing.JFrame {
                     .addComponent(txtNomeCartao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jBtnDinheiro)
-                        .addComponent(jLabel7))
+                    .addComponent(jBtnDinheiro)
+                    .addComponent(jLabel7)
                     .addComponent(txtBandeira, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,10 +245,10 @@ public class IUCadastroVenda extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(34, 34, 34))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(296, 296, 296)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCadastroVendas)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(295, 295, 295))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,9 +275,9 @@ public class IUCadastroVenda extends javax.swing.JFrame {
                     .addComponent(txtValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(btnCadastroVendas)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
@@ -290,10 +300,6 @@ public class IUCadastroVenda extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDataVendaActionPerformed
 
-    private void txtValorTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorTotalActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtValorTotalActionPerformed
-
     private void jBtnCartãoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCartãoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jBtnCartãoActionPerformed
@@ -303,12 +309,55 @@ public class IUCadastroVenda extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnDinheiroActionPerformed
 
     private void btnCadastroVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroVendasActionPerformed
-        int codigoVenda = Integer.parseInt(txtCodigoVenda.getText());
-        int codigoCliente = Integer.parseInt(txtCodCliente.getText());
-        int codigoCorretor = Integer.parseInt(txtCodCorretores.getText());
-        int codigoImovel = Integer.parseInt(txtImovel.getText()); 
-        
+
+          
+        if((txtCodigoVenda.getText().length() == 0 )||(txtCodCliente.getText().length() == 0)||
+           (txtImovel.getText().length() == 0)||(txtCodCorretores.getText().length() == 0)||
+           (txtDataVenda.getText().length() == 0)||(txtValorTotal.getText().length() == 0)){
+            
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+        }else{
+            
+            int codigoVenda = Integer.parseInt(txtCodigoVenda.getText());
+            int codigoCliente = Integer.parseInt(txtCodCliente.getText());
+            int codigoCorretor = Integer.parseInt(txtCodCorretores.getText());
+            int codigoImovel = Integer.parseInt(txtImovel.getText()); 
+            float ValorTotalVenda = Float.parseFloat(txtValorTotal.getText()); 
+    
+            String dateVenda = txtDataVenda.getText(); 
+            LocalDate dataVenda = LocalDate.parse(dateVenda,DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            
+            
+            if (!(jBtnCartão.isSelected())){
+              JOptionPane.showMessageDialog(null, "Esolha uma forma de pagamento"); 
+        }else{
+                String tipoPagamento = "Cartão"; 
+                String nome = txtNomeCartao.getText();
+                String bandeira = txtBandeira.getText(); 
+                String numeroCartao = TxtNumeroCartao.getText(); 
+            
+                Controlador control = new Controlador();
+            
+                Cartao cartoes = new Cartao(nome, bandeira, numeroCartao, tipoPagamento);
+            
+                Venda vendas = new Venda(codigoVenda,control.buscaClientePorCodigo(codigoCliente), 
+                control.buscaCorretorPorCodigo(codigoCorretor), control.buscaImovelPorCodigo(codigoImovel), 
+                dataVenda, ValorTotalVenda, cartoes);
+            
+                control.addVenda(vendas);
+                control.listaTodasVendas();
+                
+                    
+    }
+    }       
     }//GEN-LAST:event_btnCadastroVendasActionPerformed
+
+    private void jBtnCartãoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnCartãoMouseClicked
+        TxtNumeroCartao.setEnabled(true);
+        txtBandeira.setEnabled(true);
+        txtNomeCartao.setEnabled(true);
+    }//GEN-LAST:event_jBtnCartãoMouseClicked
+    
 
     /**
      * @param args the command line arguments
@@ -369,6 +418,6 @@ public class IUCadastroVenda extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtDataVenda;
     private javax.swing.JFormattedTextField txtImovel;
     private javax.swing.JTextField txtNomeCartao;
-    private javax.swing.JFormattedTextField txtValorTotal;
+    private javax.swing.JTextField txtValorTotal;
     // End of variables declaration//GEN-END:variables
 }

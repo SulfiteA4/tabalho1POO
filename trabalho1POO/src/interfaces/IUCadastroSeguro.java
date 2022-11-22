@@ -147,7 +147,7 @@ public class IUCadastroSeguro extends javax.swing.JFrame {
         
         
         if( (txtCodigo.getText().length() == 0) || (txtNomeSeguradoura1.getText().length() == 0) || (txtAreaDescricao.getText().length() == 0) || (txtTipoSeguro.getText().length() == 0) || (txtValor.getText().length() == 0)){
-            JOptionPane.showMessageDialog(null, "Preencha todos os Campos!");
+            JOptionPane.showMessageDialog(null,"Preencha todos os campos!" , "Erro no Cadastro!", NORMAL);
             
         }else{
             String nomeSeguradoura = txtNomeSeguradoura1.getText();

@@ -269,6 +269,17 @@ public class IUCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTelefoneActionPerformed
 
     private void btnCadastroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroClienteActionPerformed
+        
+        if((txtCodigo.getText().length() == 0 )||(txtNome.getText().length() == 0)||
+           (txtCPF.getText().length() == 0)||(txtRG.getText().length() == 0)||
+           (txtEndereco.getText().length() == 0)||(txtEmail.getText().length() == 0)||
+           (txtDataCad.getText().length() == 0 )||(txtDadaNasc.getText().length() == 0)||
+           (txtCEP.getText().length() == 0 )||(txtTelefone.getText().length() == 0)){
+                
+           JOptionPane.showMessageDialog(null,"Preencha todos os campos!" , "Erro no Cadastro!", NORMAL);
+        
+        }else{
+        
         int codigo = Integer.parseInt(txtCodigo.getText());
         String nome = txtNome.getText(); 
         String cpf = txtCPF.getText(); 
@@ -289,7 +300,7 @@ public class IUCadastroCliente extends javax.swing.JFrame {
         Controlador control = new Controlador();
         control.addCliente(cliente);
         control.getTodosClientes();
-        
+        }
     }//GEN-LAST:event_btnCadastroClienteActionPerformed
 
     /**

@@ -315,7 +315,7 @@ public class IUCadastroVenda extends javax.swing.JFrame {
            (txtImovel.getText().length() == 0)||(txtCodCorretores.getText().length() == 0)||
            (txtDataVenda.getText().length() == 0)||(txtValorTotal.getText().length() == 0)){
             
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+           JOptionPane.showMessageDialog(null,"Preencha todos os campos!" , "Erro no Cadastro!", NORMAL);
         }else{
             
             int codigoVenda = Integer.parseInt(txtCodigoVenda.getText());
@@ -345,7 +345,7 @@ public class IUCadastroVenda extends javax.swing.JFrame {
                 dataVenda, ValorTotalVenda, cartoes);
             
                 control.addVenda(vendas);
-                control.listaTodasVendas();
+                //control.listaTodasVendas();
                 
                     
     }

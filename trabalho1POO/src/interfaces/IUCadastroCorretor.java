@@ -8,6 +8,7 @@ package interfaces;
 import controladores.Controlador;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 import modelos.Corretor;
 
 /**
@@ -326,6 +327,19 @@ public class IUCadastroCorretor extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDadaNascCorretorActionPerformed
 
     private void btnCadastroCorretorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastroCorretorActionPerformed
+        
+        if((txtCodigoCorretor.getText().length() == 0 )||(txtCPFCorretor.getText().length() == 0)||
+           (txtRGCorretor.getText().length() == 0)||(txtEnderecoCorretor.getText().length() == 0)||
+           (txtEmailCorretor.getText().length() == 0)||(txtDataAdmissao.getText().length() == 0)||
+           (txtDadaNascCorretor.getText().length() == 0 )||(txtCEPCorretor.getText().length() == 0)||
+           (txtTelefoneCorretor.getText().length() == 0 )||(txtCreciCorretor.getText().length() == 0)||
+           (txtPISCorretor.getText().length() == 0 )||(txtSalario.getText().length() == 0)||
+           (txtNomeCorretor.getText().length() == 0 )){
+                
+            JOptionPane.showMessageDialog(null,"Preencha todos os campos!" , "Erro no Cadastro!", NORMAL);
+        }else{
+        
+        
         int codigo = Integer.parseInt(txtCodigoCorretor.getText());
         String nome = txtNomeCorretor.getText();
         String cpf = txtCPFCorretor.getText();
@@ -349,7 +363,7 @@ public class IUCadastroCorretor extends javax.swing.JFrame {
         control.addCorretor(corretores);
         control.getTodosCOrretores();
         
-
+        }
     }//GEN-LAST:event_btnCadastroCorretorActionPerformed
 
     private void txtNomeCorretorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeCorretorActionPerformed

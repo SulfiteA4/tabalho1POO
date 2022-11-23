@@ -36,29 +36,20 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemCorretorActionPerformed"/>
               </Events>
             </MenuItem>
-            <Menu class="javax.swing.JMenu" name="subMenuCadImovel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Cadastro Imovel "/>
-              </Properties>
-              <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="menuItemApResidencial">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Cadastro Apartamento Residencial"/>
-                  </Properties>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="menuItemComercial">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Cadastro Comercial "/>
-                  </Properties>
-                </MenuItem>
-              </SubComponents>
-            </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemVenda">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cadastro Venda "/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemVendaActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemImovel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cadastro Im&#xf3;vel"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemImovelActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemAluguel">

@@ -8,46 +8,42 @@ import controladores.Controlador;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import modelos.Cliente;
+import modelos.Corretor;
 
 /**
  *
  * @author Lucas
  */
-public class IUConsultaClientes extends java.awt.Dialog {
+public class IUConsultaCorretores extends java.awt.Dialog {
     private DefaultTableModel model;
     private Controlador control;
-    private String codCliente;
-
+    private String codCorretor;
     /**
-     * Creates new form teste
+     * Creates new form IUConsultaCorretores
      */
-    public IUConsultaClientes(java.awt.Frame parent, boolean modal) {
+    public IUConsultaCorretores(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        codCliente = null;
+        codCorretor = null;
         control = new Controlador();
         String columns[] = {"Código","Nome"};
         model = new DefaultTableModel(columns, 0);
-        tableClientes.setModel(model);
+        tableCorretores.setModel(model);
         
-        ArrayList<Cliente> clientes = control.getTodosClientes();
-        for(int i = 0; i < clientes.size(); i++){
-            if (clientes.get(i) != null){
+        ArrayList<Corretor> corretores = control.getTodosCOrretores();
+        for(int i = 0; i < corretores.size(); i++){
+            if (corretores.get(i) != null){
                 String line[] = new String[2];
-                line[0] = Integer.toString(clientes.get(i).getCodigoUsuario());
-                line[1] = clientes.get(i).getNome();
+                line[0] = Integer.toString(corretores.get(i).getCodigoUsuario());
+                line[1] = corretores.get(i).getNome();
                 model.addRow(line);
             }
         }
-        
-        
     }
     
-    public String getCodCliente(){
-            return this.codCliente;
+    public String getCodCorretor(){
+        return this.codCorretor;
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,7 +53,7 @@ public class IUConsultaClientes extends java.awt.Dialog {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableClientes = new javax.swing.JTable();
+        tableCorretores = new javax.swing.JTable();
         btnSelecionar = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
 
@@ -67,7 +63,7 @@ public class IUConsultaClientes extends java.awt.Dialog {
             }
         });
 
-        tableClientes.setModel(new javax.swing.table.DefaultTableModel(
+        tableCorretores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -78,7 +74,7 @@ public class IUConsultaClientes extends java.awt.Dialog {
                 "Código", "Nome"
             }
         ));
-        jScrollPane1.setViewportView(tableClientes);
+        jScrollPane1.setViewportView(tableCorretores);
 
         btnSelecionar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         btnSelecionar.setText("Selecionar");
@@ -103,25 +99,25 @@ public class IUConsultaClientes extends java.awt.Dialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
+                        .addGap(150, 150, 150)
                         .addComponent(btnSelecionar)
-                        .addGap(93, 93, 93)
-                        .addComponent(btnFechar)))
-                .addContainerGap(77, Short.MAX_VALUE))
+                        .addGap(105, 105, 105)
+                        .addComponent(btnFechar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFechar)
                     .addComponent(btnSelecionar))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         pack();
@@ -136,9 +132,9 @@ public class IUConsultaClientes extends java.awt.Dialog {
     }//GEN-LAST:event_closeDialog
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
-        int index = tableClientes.getSelectedRow();
+        int index = tableCorretores.getSelectedRow();
         if( index >= 0){
-            codCliente = (String) model.getValueAt(index, 0);
+            codCorretor = (String) model.getValueAt(index, 0);
             setVisible(false);
         }else{
             JOptionPane.showMessageDialog(null, "Selecione um Cliente!");
@@ -146,7 +142,7 @@ public class IUConsultaClientes extends java.awt.Dialog {
     }//GEN-LAST:event_btnSelecionarActionPerformed
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-        codCliente = null;
+        codCorretor = null;
         setVisible(false);
     }//GEN-LAST:event_btnFecharActionPerformed
 
@@ -156,7 +152,7 @@ public class IUConsultaClientes extends java.awt.Dialog {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                IUConsultaClientes dialog = new IUConsultaClientes(new java.awt.Frame(), true);
+                IUConsultaCorretores dialog = new IUConsultaCorretores(new java.awt.Frame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);
@@ -172,6 +168,6 @@ public class IUConsultaClientes extends java.awt.Dialog {
     private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnSelecionar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableClientes;
+    private javax.swing.JTable tableCorretores;
     // End of variables declaration//GEN-END:variables
 }

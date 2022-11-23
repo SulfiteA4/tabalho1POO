@@ -59,6 +59,7 @@ public class IUCadastroVenda extends javax.swing.JFrame {
         btnCadastroVendas = new javax.swing.JButton();
         txtValorTotal = new javax.swing.JTextField();
         btnBuscaCliente = new javax.swing.JButton();
+        btnBuscaCorretor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -216,6 +217,13 @@ public class IUCadastroVenda extends javax.swing.JFrame {
             }
         });
 
+        btnBuscaCorretor.setText("Consultar Corretor");
+        btnBuscaCorretor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscaCorretorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -240,20 +248,21 @@ public class IUCadastroVenda extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtImovel, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
                             .addComponent(txtCodigoVenda))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCodCorretores, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtCodCorretores, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCodCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnBuscaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addContainerGap(20, Short.MAX_VALUE))
+                                .addComponent(txtCodCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBuscaCliente)
+                            .addComponent(btnBuscaCorretor))
+                        .addContainerGap(13, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCadastroVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -281,7 +290,8 @@ public class IUCadastroVenda extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(txtImovel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(txtCodCorretores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCodCorretores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscaCorretor))
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -380,6 +390,15 @@ public class IUCadastroVenda extends javax.swing.JFrame {
         String codCliente = consulCli.getCodCliente();
         txtCodCliente.setText(codCliente);
     }//GEN-LAST:event_btnBuscaClienteActionPerformed
+
+    private void btnBuscaCorretorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaCorretorActionPerformed
+        // TODO add your handling code here:
+        IUConsultaCorretores consulCorret = new IUConsultaCorretores(null, true);
+        consulCorret.setVisible(true);
+        
+        String codCorretor = consulCorret.getCodCorretor();
+        txtCodCorretores.setText(codCorretor);
+    }//GEN-LAST:event_btnBuscaCorretorActionPerformed
     
 
     /**
@@ -420,6 +439,7 @@ public class IUCadastroVenda extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField TxtNumeroCartao;
     private javax.swing.JButton btnBuscaCliente;
+    private javax.swing.JButton btnBuscaCorretor;
     private javax.swing.JButton btnCadastroVendas;
     private javax.swing.ButtonGroup buttonGroupPagamento;
     private javax.swing.JRadioButton jBtnCartão;

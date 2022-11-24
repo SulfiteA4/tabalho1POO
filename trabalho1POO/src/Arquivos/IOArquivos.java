@@ -278,7 +278,7 @@ public class IOArquivos {
     public void escreverVenda(Venda venda){
         try{
             Controlador control = new Controlador();
-            File arquivoVendas = new File(control.getConfigImoveis());
+            File arquivoVendas = new File(control.getConfigVendas());
             ArrayList<Venda> vendas = lerVendas();
 
             int contVendas;

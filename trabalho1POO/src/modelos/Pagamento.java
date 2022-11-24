@@ -4,11 +4,13 @@
  */
 package modelos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Martines
  */
-public abstract class Pagamento {
+public abstract class Pagamento implements Serializable{
     protected String tipoPagamento; 
 
     public Pagamento(String tipoPagamento) {

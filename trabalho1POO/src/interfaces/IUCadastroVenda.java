@@ -330,7 +330,10 @@ public class IUCadastroVenda extends javax.swing.JFrame {
             
             if (!(jBtnCartão.isSelected())){
               JOptionPane.showMessageDialog(null, "Esolha uma forma de pagamento"); 
-        }else{
+            }else{
+                if((txtNomeCartao.getText().length() == 0 )||(txtBandeira.getText().length() == 0 )||(TxtNumeroCartao.getText().length() == 0 )){
+                    JOptionPane.showMessageDialog(null, "Preencha todos os dados do cartão!"); 
+                }else{
                 String tipoPagamento = "Cartão"; 
                 String nome = txtNomeCartao.getText();
                 String bandeira = txtBandeira.getText(); 
@@ -340,16 +343,16 @@ public class IUCadastroVenda extends javax.swing.JFrame {
             
                 Cartao cartoes = new Cartao(nome, bandeira, numeroCartao, tipoPagamento);
             
-                Venda vendas = new Venda(codigoVenda,control.buscaClientePorCodigo(codigoCliente), 
+                Venda venda = new Venda(codigoVenda,control.buscaClientePorCodigo(codigoCliente), 
                 control.buscaCorretorPorCodigo(codigoCorretor), control.buscaImovelPorCodigo(codigoImovel), 
                 dataVenda, ValorTotalVenda, cartoes);
             
-                control.addVenda(vendas);
+                control.addVenda(venda);
                 //control.listaTodasVendas();
-                
+                }
                     
-    }
-    }       
+            }
+        }          
     }//GEN-LAST:event_btnCadastroVendasActionPerformed
 
     private void jBtnCartãoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnCartãoMouseClicked

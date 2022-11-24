@@ -4,6 +4,7 @@
  */
 package modelos;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -11,7 +12,7 @@ import java.time.format.DateTimeFormatter;
  *
  * @author Lucas
  */
-public class Venda {
+public class Venda implements Serializable{
     private int codigoVenda;
     private Cliente cliente;
     private Corretor corretor;

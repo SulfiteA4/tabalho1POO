@@ -23,7 +23,8 @@ public class Main {
         
         Controlador control1 = new Controlador();
         System.out.println(control1.getTodosClientes());
-
+        System.out.println(control1.listaTodosOsImoveis());
+        
         IUPrincipal principal = new IUPrincipal();
         principal.setVisible(true);
         principal.setTitle("Sistema Imobiliária");

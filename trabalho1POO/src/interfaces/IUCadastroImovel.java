@@ -71,7 +71,7 @@ public class IUCadastroImovel extends javax.swing.JFrame {
         txtImposto = new javax.swing.JTextField();
         txtQtdDormi = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         lblCadastroCliente.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N

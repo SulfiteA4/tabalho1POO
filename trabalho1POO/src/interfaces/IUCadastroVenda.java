@@ -60,6 +60,7 @@ public class IUCadastroVenda extends javax.swing.JFrame {
         txtValorTotal = new javax.swing.JTextField();
         btnBuscaCliente = new javax.swing.JButton();
         btnBuscaCorretor = new javax.swing.JButton();
+        btnBuscaImovel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -224,6 +225,13 @@ public class IUCadastroVenda extends javax.swing.JFrame {
             }
         });
 
+        btnBuscaImovel.setText("Consultar Imóvel");
+        btnBuscaImovel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscaImovelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -245,24 +253,27 @@ public class IUCadastroVenda extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtImovel, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-                            .addComponent(txtCodigoVenda))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCodigoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtImovel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnBuscaImovel, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCodCorretores, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtCodCorretores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCodCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnBuscaCliente)
-                            .addComponent(btnBuscaCorretor))
-                        .addContainerGap(13, Short.MAX_VALUE))
+                                .addComponent(txtCodCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnBuscaCorretor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnBuscaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(34, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblCadastroVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -291,7 +302,8 @@ public class IUCadastroVenda extends javax.swing.JFrame {
                     .addComponent(txtImovel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(txtCodCorretores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscaCorretor))
+                    .addComponent(btnBuscaCorretor)
+                    .addComponent(btnBuscaImovel))
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -399,6 +411,14 @@ public class IUCadastroVenda extends javax.swing.JFrame {
         String codCorretor = consulCorret.getCodCorretor();
         txtCodCorretores.setText(codCorretor);
     }//GEN-LAST:event_btnBuscaCorretorActionPerformed
+
+    private void btnBuscaImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaImovelActionPerformed
+        // TODO add your handling code here:
+        IUConsultaImovel consulImov = new IUConsultaImovel(null, true);
+        consulImov.setVisible(true);
+        String codImovel = consulImov.getCodigoImovel();
+        txtImovel.setText(codImovel);
+    }//GEN-LAST:event_btnBuscaImovelActionPerformed
     
 
     /**
@@ -440,6 +460,7 @@ public class IUCadastroVenda extends javax.swing.JFrame {
     private javax.swing.JTextField TxtNumeroCartao;
     private javax.swing.JButton btnBuscaCliente;
     private javax.swing.JButton btnBuscaCorretor;
+    private javax.swing.JButton btnBuscaImovel;
     private javax.swing.JButton btnCadastroVendas;
     private javax.swing.ButtonGroup buttonGroupPagamento;
     private javax.swing.JRadioButton jBtnCartão;

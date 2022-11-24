@@ -8,42 +8,40 @@ import controladores.Controlador;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import modelos.Corretor;
+import modelos.Imovel;
 
 /**
  *
  * @author Lucas
  */
-public class IUConsultaCorretores extends java.awt.Dialog {
+public class IUConsultaImovel extends java.awt.Dialog {
     private DefaultTableModel model;
     private Controlador control;
-    private String codCorretor;
+    private String codImovel;
     /**
-     * Creates new form IUConsultaCorretores
+     * Creates new form IUConsultaImovel
      */
-    public IUConsultaCorretores(java.awt.Frame parent, boolean modal) {
+    public IUConsultaImovel(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        codCorretor = null;
+        codImovel = null;
         control = new Controlador();
-        String columns[] = {"Código","Nome"};
+        String columns[] = {"Código","Endereço"};
         model = new DefaultTableModel(columns, 0);
-        tableCorretores.setModel(model);
+        tableImoveis.setModel(model);
         
-        ArrayList<Corretor> corretores = control.getTodosCOrretores();
-        for(int i = 0; i < corretores.size(); i++){
-            if (corretores.get(i) != null){
+        ArrayList<Imovel> imoveis = control.listaTodosOsImoveis();
+        
+        for(int i = 0; i < imoveis.size(); i++){
+            if (imoveis.get(i) != null){
                 String line[] = new String[2];
-                line[0] = Integer.toString(corretores.get(i).getCodigoUsuario());
-                line[1] = corretores.get(i).getNome();
+                line[0] = Integer.toString(imoveis.get(i).getCodigoImovel());
+                line[1] = imoveis.get(i).getEndereco();
                 model.addRow(line);
             }
         }
     }
-    
-    public String getCodCorretor(){
-        return this.codCorretor;
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,7 +51,7 @@ public class IUConsultaCorretores extends java.awt.Dialog {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableCorretores = new javax.swing.JTable();
+        tableImoveis = new javax.swing.JTable();
         btnSelecionar = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
 
@@ -63,7 +61,7 @@ public class IUConsultaCorretores extends java.awt.Dialog {
             }
         });
 
-        tableCorretores.setModel(new javax.swing.table.DefaultTableModel(
+        tableImoveis.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -71,10 +69,10 @@ public class IUConsultaCorretores extends java.awt.Dialog {
                 {null, null}
             },
             new String [] {
-                "Código", "Nome"
+                "Código", "Endereço"
             }
         ));
-        jScrollPane1.setViewportView(tableCorretores);
+        jScrollPane1.setViewportView(tableImoveis);
 
         btnSelecionar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         btnSelecionar.setText("Selecionar");
@@ -99,25 +97,25 @@ public class IUConsultaCorretores extends java.awt.Dialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(btnSelecionar)
-                        .addGap(105, 105, 105)
-                        .addComponent(btnFechar))
+                        .addGap(60, 60, 60)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(72, Short.MAX_VALUE))
+                        .addGap(96, 96, 96)
+                        .addComponent(btnSelecionar)
+                        .addGap(146, 146, 146)
+                        .addComponent(btnFechar)))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(16, 16, 16)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnFechar)
-                    .addComponent(btnSelecionar))
-                .addContainerGap(102, Short.MAX_VALUE))
+                    .addComponent(btnSelecionar)
+                    .addComponent(btnFechar))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
@@ -126,23 +124,27 @@ public class IUConsultaCorretores extends java.awt.Dialog {
     /**
      * Closes the dialog
      */
+    public String getCodigoImovel(){
+        return this.codImovel;
+    }
+    
     private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
         setVisible(false);
         dispose();
     }//GEN-LAST:event_closeDialog
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
-        int index = tableCorretores.getSelectedRow();
+        int index = tableImoveis.getSelectedRow();
         if( index >= 0){
-            codCorretor = (String) model.getValueAt(index, 0);
+            codImovel = (String) model.getValueAt(index, 0);
             setVisible(false);
         }else{
-            JOptionPane.showMessageDialog(null, "Selecione um Corretor!");
+            JOptionPane.showMessageDialog(null, "Selecione um Imovel!");
         }
     }//GEN-LAST:event_btnSelecionarActionPerformed
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-        codCorretor = null;
+        codImovel = null;
         setVisible(false);
     }//GEN-LAST:event_btnFecharActionPerformed
 
@@ -152,7 +154,7 @@ public class IUConsultaCorretores extends java.awt.Dialog {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                IUConsultaCorretores dialog = new IUConsultaCorretores(new java.awt.Frame(), true);
+                IUConsultaImovel dialog = new IUConsultaImovel(new java.awt.Frame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
                         System.exit(0);
@@ -168,6 +170,6 @@ public class IUConsultaCorretores extends java.awt.Dialog {
     private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnSelecionar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableCorretores;
+    private javax.swing.JTable tableImoveis;
     // End of variables declaration//GEN-END:variables
 }

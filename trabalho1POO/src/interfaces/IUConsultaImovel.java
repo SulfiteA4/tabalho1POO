@@ -32,14 +32,20 @@ public class IUConsultaImovel extends java.awt.Dialog {
         
         ArrayList<Imovel> imoveis = control.listaTodosOsImoveis();
         
-        for(int i = 0; i < imoveis.size(); i++){
-            if (imoveis.get(i) != null){
-                String line[] = new String[2];
-                line[0] = Integer.toString(imoveis.get(i).getCodigoImovel());
-                line[1] = imoveis.get(i).getEndereco();
-                model.addRow(line);
-            }
+        if(imoveis != null){
+            for(int i = 0; i < imoveis.size(); i++){
+                if (imoveis.get(i) != null){
+                    String line[] = new String[2];
+                    line[0] = Integer.toString(imoveis.get(i).getCodigoImovel());
+                    line[1] = imoveis.get(i).getEndereco();
+                    model.addRow(line);
+                }
+             }
+        }else{
+            JOptionPane.showMessageDialog(this, "Não há nenhum Imóvel cadastrado!");
         }
+        
+        
     }
 
     /**

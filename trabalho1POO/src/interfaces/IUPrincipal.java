@@ -120,6 +120,11 @@ public class IUPrincipal extends javax.swing.JFrame {
         jMenuCadastros.add(menuItemImovel);
 
         menuItemAluguel.setText("Cadastro Locação");
+        menuItemAluguel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemAluguelActionPerformed(evt);
+            }
+        });
         jMenuCadastros.add(menuItemAluguel);
 
         menuItemSeguro.setText("Cadastro Seguro");
@@ -311,6 +316,10 @@ public class IUPrincipal extends javax.swing.JFrame {
     private void menuItemImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemImovelActionPerformed
         new IUCadastroImovel().setVisible(true); 
     }//GEN-LAST:event_menuItemImovelActionPerformed
+
+    private void menuItemAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAluguelActionPerformed
+        new IUCadastroAluguell().setVisible(true);
+    }//GEN-LAST:event_menuItemAluguelActionPerformed
 
 
     /**

@@ -194,21 +194,30 @@ public class Controlador {
     }
     
     //7. Listar todos os Imóveis disponíveis para vendas.
-    public ArrayList<Imovel> listaImoveisDisponiveisCompra(){
+    public ArrayList<Imovel> listaImoveisDisponiveisCompraAluguel(){
         IOArquivos arq = new IOArquivos();
-        ArrayList<Imovel> todosOsImoveis = arq.lerImoveis();
-        ArrayList<Imovel> imoveisDisponiveis = new ArrayList();
+        ArrayList<Imovel> todosImoveis = arq.lerImoveis();
+        ArrayList<Venda> todasVendas = arq.lerVendas();
         
-        if(todosOsImoveis == null){
-            return null;
-        }else{
-            for(int i = 0; i < todosOsImoveis.size(); i++){
-                if(todosOsImoveis.get(i).isDisponivelVenda() == true){
-                    imoveisDisponiveis.add(todosOsImoveis.get(i));
-                }   
+        //array para armazenar os index que serão excluidos.
+        int[] index = new int[todasVendas.size()];
+        
+        //pega os index para excluir os imoveis vendidos.
+        for(int i = 0; i < todasVendas.size(); i++){
+            for(int j = 0; j < todosImoveis.size(); j++){
+                if(todasVendas.get(i).getImovel().equals(todosImoveis.get(j))){
+                    index[i] = todosImoveis.indexOf(j);
+                }
+                
             }
-            return imoveisDisponiveis;
         }
+        //exclui os imoveis vendidos.
+        for(int i = 0; i < index.length; i++){
+            todosImoveis.remove(index[i]);
+        }
+        
+        //retorna os imoveis disponiveis.
+        return todosImoveis;
     }
     
     //8. Listar todos os Imóveis com atraso no pagamento do aluguel.

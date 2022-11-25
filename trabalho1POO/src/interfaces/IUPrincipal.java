@@ -4,6 +4,8 @@
  */
 package interfaces;
 
+import controladores.Controlador;
+
 /**
  *
  * @author Martines
@@ -138,12 +140,22 @@ public class IUPrincipal extends javax.swing.JFrame {
         subMenuRelCli.setText("Relatório de Clientes ");
 
         jMenuClientes.setText("Todos Clientes");
+        jMenuClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuClientesActionPerformed(evt);
+            }
+        });
         subMenuRelCli.add(jMenuClientes);
 
         jMenuCompraCliEsp.setText("Histórico de Compra Cliente Específico");
         subMenuRelCli.add(jMenuCompraCliEsp);
 
         jMenuCliAluguelAtraso.setText("Clientes com Aluguel em Atraso");
+        jMenuCliAluguelAtraso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCliAluguelAtrasoActionPerformed(evt);
+            }
+        });
         subMenuRelCli.add(jMenuCliAluguelAtraso);
 
         jMenuRelat.add(subMenuRelCli);
@@ -151,6 +163,11 @@ public class IUPrincipal extends javax.swing.JFrame {
         subMenuRelCorre.setText("Relatório de Corretores ");
 
         jMenuCorretores.setText("Todos Corretores ");
+        jMenuCorretores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCorretoresActionPerformed(evt);
+            }
+        });
         subMenuRelCorre.add(jMenuCorretores);
 
         jMenuFuncDoMês.setText("Funcionários do Mês");
@@ -161,6 +178,11 @@ public class IUPrincipal extends javax.swing.JFrame {
         subMenuRelVend.setText("Relatório de Aluguel e Vendas  ");
 
         jMenuIAlugueis.setText("Todos Alugueis");
+        jMenuIAlugueis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuIAlugueisActionPerformed(evt);
+            }
+        });
         subMenuRelVend.add(jMenuIAlugueis);
 
         jMenuAlugFinalizados.setText("Alugueis Finalizados");
@@ -185,6 +207,11 @@ public class IUPrincipal extends javax.swing.JFrame {
         subMenuRelVend.add(jSeparator1);
 
         jMenuVendas.setText("Todas as Vendas");
+        jMenuVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuVendasActionPerformed(evt);
+            }
+        });
         subMenuRelVend.add(jMenuVendas);
 
         jMenuLucrosTotais.setText("Lucros Totais das Vendas ");
@@ -195,6 +222,11 @@ public class IUPrincipal extends javax.swing.JFrame {
         subMenuRelVend.add(jSeparator2);
 
         jMenuSeguros.setText("Seguros Cadastrados");
+        jMenuSeguros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuSegurosActionPerformed(evt);
+            }
+        });
         subMenuRelVend.add(jMenuSeguros);
 
         jMenuRelat.add(subMenuRelVend);
@@ -210,9 +242,19 @@ public class IUPrincipal extends javax.swing.JFrame {
         subMenuRelImovel.add(jMenuTodosImoveis);
 
         jMenuCasasResid.setText("Casas Residenciais");
+        jMenuCasasResid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCasasResidActionPerformed(evt);
+            }
+        });
         subMenuRelImovel.add(jMenuCasasResid);
 
         jMenuApResidencial.setText("Apartamentos Residenciais");
+        jMenuApResidencial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuApResidencialActionPerformed(evt);
+            }
+        });
         subMenuRelImovel.add(jMenuApResidencial);
 
         jMenuComerciais.setText("Estabelecimentos Comerciais");
@@ -268,11 +310,15 @@ public class IUPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuTodosImoveisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuTodosImoveisActionPerformed
-        // TODO add your handling code here:
+        Controlador control = new Controlador();
+        IURelatorioTodosGeral relatorioTodosImoveis =  new IURelatorioTodosGeral(null, false);
+        relatorioTodosImoveis.exibir("Relatório Todos os Imóveis Cadastrados", "Todos os Todos os Imóveis Cadastrados" , control.listaTodosOsImoveis().toString());
     }//GEN-LAST:event_jMenuTodosImoveisActionPerformed
 
     private void jMenuComerciaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuComerciaisActionPerformed
-        // TODO add your handling code here:
+        Controlador control = new Controlador();
+        IURelatorioTodosGeral relatorioTodosComerciais =  new IURelatorioTodosGeral(null, false);
+        relatorioTodosComerciais.exibir("Relatório Todos os Imóveis Comerciais Cadastrados", "Todos os Todos os Imóveis Comerciais Cadastrados" , control.listaTodosOsComerciais().toString());
     }//GEN-LAST:event_jMenuComerciaisActionPerformed
 
     private void jMenuAlugCliEspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAlugCliEspActionPerformed
@@ -311,6 +357,58 @@ public class IUPrincipal extends javax.swing.JFrame {
     private void menuItemImovelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemImovelActionPerformed
         new IUCadastroImovel().setVisible(true); 
     }//GEN-LAST:event_menuItemImovelActionPerformed
+
+    private void jMenuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuClientesActionPerformed
+        Controlador control = new Controlador();
+        IURelatorioTodosGeral relatorioTodosClientes =  new IURelatorioTodosGeral(null, false);
+        relatorioTodosClientes.exibir("Relatório Todos os Clientes Cadastrados", "Todos os Clientes Cadastrados" , control.getTodosClientes().toString());
+        
+        
+    }//GEN-LAST:event_jMenuClientesActionPerformed
+
+    private void jMenuCorretoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCorretoresActionPerformed
+        // TODO add your handling code here:
+        Controlador control = new Controlador();
+        IURelatorioTodosGeral relatorioTodosCorretores =  new IURelatorioTodosGeral(null, false);
+        relatorioTodosCorretores.exibir("Relatório Todos os Corretores Cadastrados", "Todos os Corretores Cadastrados" , control.getTodosCOrretores().toString());
+    }//GEN-LAST:event_jMenuCorretoresActionPerformed
+
+    private void jMenuIAlugueisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuIAlugueisActionPerformed
+        Controlador control = new Controlador();
+        IURelatorioTodosGeral relatorioTodosAlugueis =  new IURelatorioTodosGeral(null, false);
+        relatorioTodosAlugueis.exibir("Relatório Todos os Alugueis Cadastrados", "Todos os Alugueis" , control.listaTodosOsAlugueis().toString());
+    }//GEN-LAST:event_jMenuIAlugueisActionPerformed
+
+    private void jMenuVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVendasActionPerformed
+        Controlador control = new Controlador();
+        IURelatorioTodosGeral relatorioTodosVendas =  new IURelatorioTodosGeral(null, false);
+        relatorioTodosVendas.exibir("Relatório Todos os Vendas Cadastrados", "Todas as Vendas" , control.listaTodasVendas().toString());
+    }//GEN-LAST:event_jMenuVendasActionPerformed
+
+    private void jMenuSegurosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSegurosActionPerformed
+        Controlador control = new Controlador();
+        IURelatorioTodosGeral relatorioTodosSeguros =  new IURelatorioTodosGeral(null, false);
+        relatorioTodosSeguros.exibir("Relatório Todos os Seguros Cadastrados", "Todas os Seguros Cadastrados" , control.listaTodosSeguros().toString());
+    }//GEN-LAST:event_jMenuSegurosActionPerformed
+
+    private void jMenuCasasResidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCasasResidActionPerformed
+        Controlador control = new Controlador();
+        IURelatorioTodosGeral relatorioTodosCasa =  new IURelatorioTodosGeral(null, false);
+        relatorioTodosCasa.exibir("Relatório Todas as Casas Residenciais Cadastrados", "Todas as Casas Residenciais Cadastrados" , control.listaTodasAsCasasResidenciais().toString());
+    }//GEN-LAST:event_jMenuCasasResidActionPerformed
+
+    private void jMenuApResidencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuApResidencialActionPerformed
+        Controlador control = new Controlador();
+        IURelatorioTodosGeral relatorioTodosApResi =  new IURelatorioTodosGeral(null, false);
+        relatorioTodosApResi.exibir("Relatório Todos os Apartamentos Residenciais Cadastrados", "Todos os Apartamentos Residenciais Cadastrados" , control.listaTodosOsApartamentosResidenciais().toString());
+    }//GEN-LAST:event_jMenuApResidencialActionPerformed
+
+    private void jMenuCliAluguelAtrasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCliAluguelAtrasoActionPerformed
+        Controlador control = new Controlador();
+        IURelatorioTodosGeral relatorioCliAluguelAtrasado =  new IURelatorioTodosGeral(null, false);
+        relatorioCliAluguelAtrasado.exibir("Relatório Todos os Apartamentos Residenciais Cadastrados", "Todos os Clientes com Alugueis em atraso" , control.listaClientesComAlugueisAtrasados().toString());
+        
+    }//GEN-LAST:event_jMenuCliAluguelAtrasoActionPerformed
 
 
     /**

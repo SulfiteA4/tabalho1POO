@@ -151,6 +151,11 @@ public class IUPrincipal extends javax.swing.JFrame {
         subMenuRelCli.add(jMenuCompraCliEsp);
 
         jMenuCliAluguelAtraso.setText("Clientes com Aluguel em Atraso");
+        jMenuCliAluguelAtraso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCliAluguelAtrasoActionPerformed(evt);
+            }
+        });
         subMenuRelCli.add(jMenuCliAluguelAtraso);
 
         jMenuRelat.add(subMenuRelCli);
@@ -393,10 +398,17 @@ public class IUPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuCasasResidActionPerformed
 
     private void jMenuApResidencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuApResidencialActionPerformed
-       Controlador control = new Controlador();
+        Controlador control = new Controlador();
         IURelatorioTodosGeral relatorioTodosApResi =  new IURelatorioTodosGeral(null, false);
         relatorioTodosApResi.exibir("Relatório Todos os Apartamentos Residenciais Cadastrados", "Todos os Apartamentos Residenciais Cadastrados" , control.listaTodosOsApartamentosResidenciais().toString());
     }//GEN-LAST:event_jMenuApResidencialActionPerformed
+
+    private void jMenuCliAluguelAtrasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCliAluguelAtrasoActionPerformed
+        Controlador control = new Controlador();
+        IURelatorioTodosGeral relatorioCliAluguelAtrasado =  new IURelatorioTodosGeral(null, false);
+        relatorioCliAluguelAtrasado.exibir("Relatório Todos os Apartamentos Residenciais Cadastrados", "Todos os Clientes com Alugueis em atraso" , control.listaClientesComAlugueisAtrasados().toString());
+        
+    }//GEN-LAST:event_jMenuCliAluguelAtrasoActionPerformed
 
 
     /**

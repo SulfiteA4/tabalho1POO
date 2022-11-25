@@ -18,6 +18,7 @@ public class IUConsultaImovel extends java.awt.Dialog {
     private DefaultTableModel model;
     private Controlador control;
     private String codImovel;
+    private String valorTotal;
     /**
      * Creates new form IUConsultaImovel
      */
@@ -25,8 +26,10 @@ public class IUConsultaImovel extends java.awt.Dialog {
         super(parent, modal);
         initComponents();
         codImovel = null;
+        valorTotal = null;
+        
         control = new Controlador();
-        String columns[] = {"Código","Endereço"};
+        String columns[] = {"Código","Endereço", "Valor de venda"};
         model = new DefaultTableModel(columns, 0);
         tableImoveis.setModel(model);
         
@@ -35,9 +38,10 @@ public class IUConsultaImovel extends java.awt.Dialog {
         if(imoveis != null){
             for(int i = 0; i < imoveis.size(); i++){
                 if (imoveis.get(i) != null){
-                    String line[] = new String[2];
+                    String line[] = new String[3];
                     line[0] = Integer.toString(imoveis.get(i).getCodigoImovel());
                     line[1] = imoveis.get(i).getEndereco();
+                    line[2] = Float.toString(imoveis.get(i).getValorVenda());
                     model.addRow(line);
                 }
              }
@@ -69,13 +73,13 @@ public class IUConsultaImovel extends java.awt.Dialog {
 
         tableImoveis.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Código", "Endereço"
+                "Código", "Endereço", "Valor Venda"
             }
         ));
         jScrollPane1.setViewportView(tableImoveis);
@@ -134,6 +138,10 @@ public class IUConsultaImovel extends java.awt.Dialog {
         return this.codImovel;
     }
     
+    public String getValorTotal(){
+        return this.valorTotal;
+    }
+    
     private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
         setVisible(false);
         dispose();
@@ -143,6 +151,7 @@ public class IUConsultaImovel extends java.awt.Dialog {
         int index = tableImoveis.getSelectedRow();
         if( index >= 0){
             codImovel = (String) model.getValueAt(index, 0);
+            valorTotal = (String) model.getValueAt(index, 2);
             setVisible(false);
         }else{
             JOptionPane.showMessageDialog(null, "Selecione um Imovel!");
@@ -151,6 +160,7 @@ public class IUConsultaImovel extends java.awt.Dialog {
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
         codImovel = null;
+        valorTotal = null;
         setVisible(false);
     }//GEN-LAST:event_btnFecharActionPerformed
 

@@ -143,10 +143,7 @@ public class Aluguel implements Serializable{
                "\n\tSeguros Contratados: " + segurosContratados + 
                "\n\tPago: "+ ((this.pago)?"SIM":"NAO");
     }
-    //para as funções que ainda não criamos coloquei um retorno ppadrao só pra não dar erro.
-    public float calcularValorTotal(){
-        return 0;
-    }
+
     
     public boolean possuiSeguro(){
         return false;

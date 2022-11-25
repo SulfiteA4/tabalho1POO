@@ -422,7 +422,9 @@ public class IUCadastroVenda extends javax.swing.JFrame {
         IUConsultaImovel consulImov = new IUConsultaImovel(null, true);
         consulImov.setVisible(true);
         String codImovel = consulImov.getCodigoImovel();
+        String valorTotal = consulImov.getValorTotal();
         txtImovel.setText(codImovel);
+        txtValorTotal.setText(valorTotal);
     }//GEN-LAST:event_btnBuscaImovelActionPerformed
     
 

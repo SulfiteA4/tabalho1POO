@@ -59,7 +59,7 @@ public class Corretor extends Usuario{
 
     @Override
     public String toString() {
-        return "\n\tCorretor: " + 
+        return "\nCorretor: " + 
                "\n\tCodigo: " + codigoUsuario + 
                "\n\tNome: " + nome +
                "\n\tCPF: " + cpf +

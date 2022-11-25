@@ -17,7 +17,10 @@ public class CasaResidencial extends Imovel{
         super(codigoImovel, endereco, dataConstrucao, areaTotal, areaConstruida, qtdDormitorios, qtdBanheiros, qtdVagasGaragem, valorIptu, valorVenda, valorAluguel, disponivelAluguel, disponivelVenda);
     }
 
-    
+    @Override
+    public float getValorAluguel(){
+        return this.valorAluguel;
+    }
 
     @Override
     public String toString() {

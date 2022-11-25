@@ -160,41 +160,74 @@ public class Controlador {
     //5. Listar todos os Imóveis disponíveis para locação (aluguel).
     public ArrayList<Imovel> listaImoveisDisponiveisLocacao(){
         IOArquivos arq = new IOArquivos();
-        ArrayList<Imovel> todosOsImoveis = arq.lerImoveis();
-        ArrayList<Imovel> imoveisDisponiveis = new ArrayList();
+        ArrayList<Imovel> todosImoveis = arq.lerImoveis();
+        ArrayList<Aluguel> todosAlugueis = arq.lerAlugueis();
         
-        if(todosOsImoveis == null){
-            return null;
-        }else{
-            for(int i = 0; i < todosOsImoveis.size(); i++){
-                if(todosOsImoveis.get(i).isDisponivelAluguel() == true){
-                    imoveisDisponiveis.add(todosOsImoveis.get(i));
-                }   
+        //array para armazenar os index que serão excluidos.
+        int[] index = new int[todosAlugueis.size()];
+        
+        //pega os index para excluir os imoveis alugados.
+        for(int i = 0; i < todosAlugueis.size(); i++){
+            for(int j = 0; j < todosImoveis.size(); j++){
+                if(todosAlugueis.get(i).getImovel().equals(todosImoveis.get(j))){
+                    index[i] = todosImoveis.indexOf(j);
+                }
+                
             }
-            return imoveisDisponiveis;
         }
+        //exclui os imoveis alugados.
+        for(int i = 0; i < index.length; i++){
+            todosImoveis.remove(index[i]);
+        }
+        
+        //retorna os imoveis disponiveis.
+        return todosImoveis;
     }
     
     //6. Listar todos os Imóveis não disponíveis para locação, ou seja, alugados ou vendidos.
     public ArrayList<Imovel> listaImoveisIndisponiveis(){
         IOArquivos arq = new IOArquivos();
-        ArrayList<Imovel> todosOsImoveis = arq.lerImoveis();
+        ArrayList<Imovel> todosImoveis = arq.lerImoveis();
+        ArrayList<Aluguel> todosAlugueis = arq.lerAlugueis();
+        ArrayList<Venda> todasVendas = arq.lerVendas();
         ArrayList<Imovel> imoveisIndisponiveis = new ArrayList();
         
-        if(todosOsImoveis == null){
-            return null;
-        }else{
-            for(int i = 0; i < todosOsImoveis.size(); i++){
-                if(todosOsImoveis.get(i).isDisponivelAluguel()== false || todosOsImoveis.get(i).isDisponivelVenda()== false ){
-                    imoveisIndisponiveis.add(todosOsImoveis.get(i));
-                }   
+        //arrays para armazenar os index dos objetos que serao retornados.
+        int[] indexAluguel = new int[todosAlugueis.size()];
+        int[] indexVenda = new int[todasVendas.size()];
+        
+        //pega os index para excluir os imoveis alugados.
+        for(int i = 0; i < todosAlugueis.size(); i++){
+            for(int j = 0; j < todosImoveis.size(); j++){
+                if(todosAlugueis.get(i).getImovel().equals(todosImoveis.get(j))){
+                    indexAluguel[i] = todosImoveis.indexOf(j);
+                }
+                
             }
-            return imoveisIndisponiveis;
         }
+        for(int i = 0; i < todasVendas.size(); i++){
+            for(int j = 0; j < todosImoveis.size(); j++){
+                if(todasVendas.get(i).getImovel().equals(todosImoveis.get(j))){
+                    indexVenda[i] = todosImoveis.indexOf(j);
+                }
+                
+            }
+        }
+
+        //exclui os imoveis alugados.
+        for(int i = 0; i < indexAluguel.length; i++){
+            imoveisIndisponiveis.add(todosImoveis.get(indexAluguel[i]));
+        }
+        for(int i = 0; i < indexVenda.length; i++){
+            imoveisIndisponiveis.add(todosImoveis.get(indexVenda[i]));
+        }
+        
+        //retorna os imoveis disponiveis.
+        return imoveisIndisponiveis;
     }
     
     //7. Listar todos os Imóveis disponíveis para vendas.
-    public ArrayList<Imovel> listaImoveisDisponiveisCompraAluguel(){
+    public ArrayList<Imovel> listaImoveisDisponiveisCompra(){
         IOArquivos arq = new IOArquivos();
         ArrayList<Imovel> todosImoveis = arq.lerImoveis();
         ArrayList<Venda> todasVendas = arq.lerVendas();

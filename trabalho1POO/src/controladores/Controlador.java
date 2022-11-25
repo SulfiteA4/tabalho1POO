@@ -323,12 +323,12 @@ public class Controlador {
     }
     
     //14. Listar o histórico de compras, imóveis comprados por um Cliente em específico.
-    public ArrayList<Venda> listaHistoricoComprasClienteEspecifico(Cliente cliente){
+    public ArrayList<Venda> listaHistoricoComprasClienteEspecifico(int codCliente){
         IOArquivos arq = new IOArquivos();
         ArrayList<Venda> todasVendas = arq.lerVendas();
         ArrayList<Venda> historico = new ArrayList();
         for(int i = 0; i < todasVendas.size(); i++){
-            if(todasVendas.get(i).getCliente() == cliente){
+            if(todasVendas.get(i).getCliente().getCodigoUsuario() == codCliente){
                 historico.add(todasVendas.get(i));
                 
             }

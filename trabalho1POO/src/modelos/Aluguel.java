@@ -143,8 +143,13 @@ public class Aluguel implements Serializable{
                "\n\tSeguros Contratados: " + segurosContratados + 
                "\n\tPago: "+ ((this.pago)?"SIM":"NAO");
     }
-    //para as funções que ainda não criamos coloquei um retorno ppadrao só pra não dar erro.
+    //para as funções que ainda não criamos coloquei um retorno padrao só pra não dar erro.
     public float calcularValorTotal(){
+//        if(this.imovel instanceof ApartamentoResidencial){
+//            
+//        }else if(){
+//        
+//        }
         return 0;
     }
     

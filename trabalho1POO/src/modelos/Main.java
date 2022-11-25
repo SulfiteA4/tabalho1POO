@@ -21,10 +21,6 @@ public class Main {
         Imobiliaria imobiliaria = new Imobiliaria();
         imobiliaria.setConfiguracoes(arq.lerConfig());
         
-        Controlador control1 = new Controlador();
-        System.out.println(control1.listaTodasVendas());
-        //System.out.println(control1.listaTodosOsImoveis());
-        
         IUPrincipal principal = new IUPrincipal();
         principal.setVisible(true);
         principal.setTitle("Sistema Imobiliária");

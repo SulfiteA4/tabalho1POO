@@ -122,6 +122,11 @@ public class IUPrincipal extends javax.swing.JFrame {
         jMenuCadastros.add(menuItemImovel);
 
         menuItemAluguel.setText("Cadastro Locação");
+        menuItemAluguel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemAluguelActionPerformed(evt);
+            }
+        });
         jMenuCadastros.add(menuItemAluguel);
 
         menuItemSeguro.setText("Cadastro Seguro");
@@ -358,6 +363,11 @@ public class IUPrincipal extends javax.swing.JFrame {
         new IUCadastroImovel().setVisible(true); 
     }//GEN-LAST:event_menuItemImovelActionPerformed
 
+
+    private void menuItemAluguelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemAluguelActionPerformed
+        new IUCadastroAluguell().setVisible(true);
+    }//GEN-LAST:event_menuItemAluguelActionPerformed
+
     private void jMenuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuClientesActionPerformed
         Controlador control = new Controlador();
         IURelatorioTodosGeral relatorioTodosClientes =  new IURelatorioTodosGeral(null, false);
@@ -409,6 +419,7 @@ public class IUPrincipal extends javax.swing.JFrame {
         relatorioCliAluguelAtrasado.exibir("Relatório Todos os Apartamentos Residenciais Cadastrados", "Todos os Clientes com Alugueis em atraso" , control.listaClientesComAlugueisAtrasados().toString());
         
     }//GEN-LAST:event_jMenuCliAluguelAtrasoActionPerformed
+
 
 
     /**

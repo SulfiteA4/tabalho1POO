@@ -19,6 +19,7 @@ public class IUConsultaImovel extends java.awt.Dialog {
     private Controlador control;
     private String codImovel;
     private String valorTotal;
+    private String valorTotalAluguel;
     /**
      * Creates new form IUConsultaImovel
      */
@@ -27,21 +28,22 @@ public class IUConsultaImovel extends java.awt.Dialog {
         initComponents();
         codImovel = null;
         valorTotal = null;
+        valorTotalAluguel = null; 
         
         control = new Controlador();
-        String columns[] = {"Código","Endereço", "Valor de venda"};
-        model = new DefaultTableModel(columns, 0);
-        tableImoveis.setModel(model);
+        String columns[] = {"Código","Endereço", "Valor de venda","Valor Total Aluguel"};
+        model = (DefaultTableModel)tableImoveis.getModel();
         
         ArrayList<Imovel> imoveis = control.listaTodosOsImoveis();
         
         if(imoveis != null){
             for(int i = 0; i < imoveis.size(); i++){
                 if (imoveis.get(i) != null){
-                    String line[] = new String[3];
+                    String line[] = new String[4];
                     line[0] = Integer.toString(imoveis.get(i).getCodigoImovel());
                     line[1] = imoveis.get(i).getEndereco();
                     line[2] = Float.toString(imoveis.get(i).getValorVenda());
+                    line[3] = Float.toString(imoveis.get(i).getValorAluguel()); 
                     model.addRow(line);
                 }
              }
@@ -71,21 +73,30 @@ public class IUConsultaImovel extends java.awt.Dialog {
             }
         });
 
+        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
         tableImoveis.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Código", "Endereço", "Valor Venda"
+                "Código", "Endereço", "Valor Venda", "Valor Total Aluguel"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableImoveis.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(tableImoveis);
 
         btnSelecionar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         btnSelecionar.setText("Selecionar");
+        btnSelecionar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSelecionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSelecionarActionPerformed(evt);
@@ -94,6 +105,7 @@ public class IUConsultaImovel extends java.awt.Dialog {
 
         btnFechar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         btnFechar.setText("Fechar");
+        btnFechar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnFechar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFecharActionPerformed(evt);
@@ -142,6 +154,10 @@ public class IUConsultaImovel extends java.awt.Dialog {
         return this.valorTotal;
     }
     
+    public String getValorTotalAluguel(){
+        return this.valorTotalAluguel;
+    }
+    
     private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
         setVisible(false);
         dispose();
@@ -152,6 +168,7 @@ public class IUConsultaImovel extends java.awt.Dialog {
         if( index >= 0){
             codImovel = (String) model.getValueAt(index, 0);
             valorTotal = (String) model.getValueAt(index, 2);
+            valorTotalAluguel = (String) model.getValueAt(index, 3); 
             setVisible(false);
         }else{
             JOptionPane.showMessageDialog(null, "Selecione um Imovel!");
@@ -161,6 +178,7 @@ public class IUConsultaImovel extends java.awt.Dialog {
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
         codImovel = null;
         valorTotal = null;
+        valorTotalAluguel = null; 
         setVisible(false);
     }//GEN-LAST:event_btnFecharActionPerformed
 

@@ -503,6 +503,21 @@ public class Controlador {
         return null;
     }
     
+    public Seguro buscaSeguroPorCodigo(int codigo){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Seguro> todosSeguros = arq.lerSeguros();
+        if(todosSeguros == null){
+            JOptionPane.showMessageDialog(null, "Ainda não existem Clientes Cadastrados!");
+        }else {
+            for(int i = 0; i < todosSeguros.size(); i++){
+                if (todosSeguros.get(i).getCodigoSeguro()== codigo){
+                    return todosSeguros.get(i);
+                }
+            }
+        }
+        return null;
+    }
+    
     public Corretor buscaCorretorPorCodigo(int codigo){
         IOArquivos arq = new IOArquivos();
         ArrayList<Corretor> todosCorretores = arq.lerCorretores();
@@ -531,22 +546,7 @@ public class Controlador {
             }
         }
         return null;
-    }   
-    
-    public Seguro buscaSeguroPorCodigo(int codigo){
-        IOArquivos arq = new IOArquivos();
-        ArrayList<Seguro> todosSeguros = arq.lerSeguros();
-        if(todosSeguros == null){
-            JOptionPane.showMessageDialog(null, "Ainda não existem seguros Cadastrados!");
-        }else {
-            for(int i = 0; i < todosSeguros.size(); i++){
-                if (todosSeguros.get(i).getCodigoSeguro() == codigo){
-                    return todosSeguros.get(i);
-                }
-            }
-        }
-        return null;
-    }   
+    }     
     
 }
     

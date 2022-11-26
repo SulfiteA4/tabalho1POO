@@ -344,7 +344,7 @@ public class IOArquivos {
             FileOutputStream fos = new FileOutputStream(arquivoAlugueis);
             ObjectOutputStream ous = new ObjectOutputStream(fos);
             
-            if( aluguel != null){
+            if( alugueis != null){
                 alugueis.add(aluguel);
                 contAlugueis = alugueis.size();
                 ous.writeInt(contAlugueis);

@@ -94,9 +94,10 @@ public class Venda implements Serializable{
                 "\n\t\t" + cliente +
                 "\n\t" + corretor +
                 "\n\t" + imovel + 
-                "\n\tData da Venda: " + dataVenda.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + 
                 "\n\tValor Total da Venda: R$" + valorTotalVenda + 
-                "\n\tForma de Pagamento: " + formaPagamento ;
+                "\n\tData da Venda: " + dataVenda.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + 
+                "\n\tForma de Pagamento: " + formaPagamento +
+                "\n_____________________________________________________________________________________________";                  
     }
     
     

@@ -50,6 +50,7 @@ public class IURelatorioBuscaImoveisCompradosClienteEspecifico extends java.awt.
         lblTipoBusca.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         lblTipoBusca.setText("Código Cliente");
 
+        btnConsultaCli.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         btnConsultaCli.setText("Consultar Cliente");
         btnConsultaCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,6 +58,7 @@ public class IURelatorioBuscaImoveisCompradosClienteEspecifico extends java.awt.
             }
         });
 
+        btnExibeRelatorio.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         btnExibeRelatorio.setText("Exibir Relatório");
         btnExibeRelatorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,7 +88,7 @@ public class IURelatorioBuscaImoveisCompradosClienteEspecifico extends java.awt.
                         .addComponent(btnConsultaCli)
                         .addGap(18, 18, 18)
                         .addComponent(btnExibeRelatorio)
-                        .addGap(0, 32, Short.MAX_VALUE)))
+                        .addGap(0, 15, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(jScrollPane1)
         );

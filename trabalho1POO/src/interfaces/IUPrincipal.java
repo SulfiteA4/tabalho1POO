@@ -225,9 +225,19 @@ public class IUPrincipal extends javax.swing.JFrame {
         subMenuRelVend.add(jMenuVendas);
 
         jMenuLucrosTotais.setText("Lucros Totais das Vendas ");
+        jMenuLucrosTotais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuLucrosTotaisActionPerformed(evt);
+            }
+        });
         subMenuRelVend.add(jMenuLucrosTotais);
 
         jMenuMesesEspeci.setText("Vendas em Meses Específicos");
+        jMenuMesesEspeci.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuMesesEspeciActionPerformed(evt);
+            }
+        });
         subMenuRelVend.add(jMenuMesesEspeci);
         subMenuRelVend.add(jSeparator2);
 
@@ -451,6 +461,16 @@ public class IUPrincipal extends javax.swing.JFrame {
         IURelatorioBuscaImoveisCompradosClienteEspecifico relCompraCliEspec = new IURelatorioBuscaImoveisCompradosClienteEspecifico(null, false);
         relCompraCliEspec.setVisible(true);
     }//GEN-LAST:event_jMenuCompraCliEspActionPerformed
+
+    private void jMenuLucrosTotaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuLucrosTotaisActionPerformed
+        IURelatorioTodasAsVendasLucroTotal todasVendasLucroTotal = new IURelatorioTodasAsVendasLucroTotal(null, false);
+        todasVendasLucroTotal.setVisible(true);
+    }//GEN-LAST:event_jMenuLucrosTotaisActionPerformed
+
+    private void jMenuMesesEspeciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMesesEspeciActionPerformed
+        IURelatorioVendasMesLucroMes vendasMesLucroMes = new IURelatorioVendasMesLucroMes(null, false);
+        vendasMesLucroMes.setVisible(true);
+    }//GEN-LAST:event_jMenuMesesEspeciActionPerformed
 
 
 

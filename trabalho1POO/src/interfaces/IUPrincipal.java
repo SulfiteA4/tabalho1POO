@@ -153,6 +153,11 @@ public class IUPrincipal extends javax.swing.JFrame {
         subMenuRelCli.add(jMenuClientes);
 
         jMenuCompraCliEsp.setText("Histórico de Compra Cliente Específico");
+        jMenuCompraCliEsp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuCompraCliEspActionPerformed(evt);
+            }
+        });
         subMenuRelCli.add(jMenuCompraCliEsp);
 
         jMenuCliAluguelAtraso.setText("Clientes com Aluguel em Atraso");
@@ -220,9 +225,19 @@ public class IUPrincipal extends javax.swing.JFrame {
         subMenuRelVend.add(jMenuVendas);
 
         jMenuLucrosTotais.setText("Lucros Totais das Vendas ");
+        jMenuLucrosTotais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuLucrosTotaisActionPerformed(evt);
+            }
+        });
         subMenuRelVend.add(jMenuLucrosTotais);
 
         jMenuMesesEspeci.setText("Vendas em Meses Específicos");
+        jMenuMesesEspeci.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuMesesEspeciActionPerformed(evt);
+            }
+        });
         subMenuRelVend.add(jMenuMesesEspeci);
         subMenuRelVend.add(jSeparator2);
 
@@ -275,9 +290,19 @@ public class IUPrincipal extends javax.swing.JFrame {
         subMenuRelImovel.add(jMenuImoveisDispAlu);
 
         jMenuImoveisDispVend.setText("Imóveis Disponíveis (Venda)");
+        jMenuImoveisDispVend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuImoveisDispVendActionPerformed(evt);
+            }
+        });
         subMenuRelImovel.add(jMenuImoveisDispVend);
 
         jMenuImoveisIndisp.setText("Imóveis Indisponíveis");
+        jMenuImoveisIndisp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuImoveisIndispActionPerformed(evt);
+            }
+        });
         subMenuRelImovel.add(jMenuImoveisIndisp);
 
         jMenuImovAtrasoAlug.setText("Imóveis Aluguel Atrasado");
@@ -419,6 +444,33 @@ public class IUPrincipal extends javax.swing.JFrame {
         relatorioCliAluguelAtrasado.exibir("Relatório Todos os Apartamentos Residenciais Cadastrados", "Todos os Clientes com Alugueis em atraso" , control.listaClientesComAlugueisAtrasados().toString());
         
     }//GEN-LAST:event_jMenuCliAluguelAtrasoActionPerformed
+
+    private void jMenuImoveisDispVendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuImoveisDispVendActionPerformed
+        Controlador control = new Controlador();
+        IURelatorioTodosGeral relatorioImovDisp =  new IURelatorioTodosGeral(null, false);
+        relatorioImovDisp.exibir("Relatório Todos imóveis disponíveis para Compra", "Todos os imóveis disponíveis para Compra" , control.listaImoveisDisponiveisCompra().toString());
+    }//GEN-LAST:event_jMenuImoveisDispVendActionPerformed
+
+    private void jMenuImoveisIndispActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuImoveisIndispActionPerformed
+        Controlador control = new Controlador();
+        IURelatorioTodosGeral relatorioImovIndisp =  new IURelatorioTodosGeral(null, false);
+        relatorioImovIndisp.exibir("Relatório Todos imóveis Indisponíveis para Compra/Aluguel", "Todos os imóveis Indisponíveis para Compra/Locação" , control.listaImoveisIndisponiveis().toString());
+    }//GEN-LAST:event_jMenuImoveisIndispActionPerformed
+
+    private void jMenuCompraCliEspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCompraCliEspActionPerformed
+        IURelatorioBuscaImoveisCompradosClienteEspecifico relCompraCliEspec = new IURelatorioBuscaImoveisCompradosClienteEspecifico(null, false);
+        relCompraCliEspec.setVisible(true);
+    }//GEN-LAST:event_jMenuCompraCliEspActionPerformed
+
+    private void jMenuLucrosTotaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuLucrosTotaisActionPerformed
+        IURelatorioTodasAsVendasLucroTotal todasVendasLucroTotal = new IURelatorioTodasAsVendasLucroTotal(null, false);
+        todasVendasLucroTotal.setVisible(true);
+    }//GEN-LAST:event_jMenuLucrosTotaisActionPerformed
+
+    private void jMenuMesesEspeciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuMesesEspeciActionPerformed
+        IURelatorioVendasMesLucroMes vendasMesLucroMes = new IURelatorioVendasMesLucroMes(null, false);
+        vendasMesLucroMes.setVisible(true);
+    }//GEN-LAST:event_jMenuMesesEspeciActionPerformed
 
 
 

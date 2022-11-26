@@ -95,6 +95,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Hist&#xf3;rico de Compra Cliente Espec&#xed;fico"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuCompraCliEspActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuCliAluguelAtraso">
                   <Properties>
@@ -181,11 +184,17 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Lucros Totais das Vendas "/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuLucrosTotaisActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuMesesEspeci">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Vendas em Meses Espec&#xed;ficos"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuMesesEspeciActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator2">
                 </MenuItem>
@@ -247,11 +256,17 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Im&#xf3;veis Dispon&#xed;veis (Venda)"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuImoveisDispVendActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuImoveisIndisp">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Im&#xf3;veis Indispon&#xed;veis"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuImoveisIndispActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuImovAtrasoAlug">
                   <Properties>

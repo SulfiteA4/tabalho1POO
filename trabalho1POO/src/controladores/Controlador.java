@@ -323,12 +323,12 @@ public class Controlador {
     }
     
     //14. Listar o histórico de compras, imóveis comprados por um Cliente em específico.
-    public ArrayList<Venda> listaHistoricoComprasClienteEspecifico(Cliente cliente){
+    public ArrayList<Venda> listaHistoricoComprasClienteEspecifico(int codCliente){
         IOArquivos arq = new IOArquivos();
         ArrayList<Venda> todasVendas = arq.lerVendas();
         ArrayList<Venda> historico = new ArrayList();
         for(int i = 0; i < todasVendas.size(); i++){
-            if(todasVendas.get(i).getCliente() == cliente){
+            if(todasVendas.get(i).getCliente().getCodigoUsuario() == codCliente){
                 historico.add(todasVendas.get(i));
                 
             }
@@ -445,8 +445,18 @@ public class Controlador {
         return arq.lerVendas();
     }
     
+    //Funcao para somar todo os valores das vendas
+    public float calculaValorTotalVenda(ArrayList<Venda> Vendas){
+        float soma = 0;
+        for(int i = 0; i < Vendas.size(); i++){
+            soma += Vendas.get(i).getValorTotalVenda();
+        }
+        return soma;
+    }
+    
     //23. Listar Vendas realizadas em um mês em específico
     public ArrayList<Venda> listaTodasVendasMes(int mes){
+        mes++;
         IOArquivos arq = new IOArquivos();
         ArrayList<Venda> todasVendas = arq.lerVendas();
         ArrayList<Venda> vendasMes = new ArrayList();
@@ -457,8 +467,9 @@ public class Controlador {
             }
         }
         return vendasMes;
-        
     }    
+    
+    
     
     //24. Listar todos os tipos de Seguros cadastrados.
     public ArrayList<Seguro> listaTodosSeguros(){

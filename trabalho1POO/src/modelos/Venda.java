@@ -91,7 +91,7 @@ public class Venda implements Serializable{
     public String toString() {
         return "\nVenda: " + 
                 "\n\tCodigo: " + codigoVenda +
-                "\n\t" + cliente +
+                "\n\t\t" + cliente +
                 "\n\t" + corretor +
                 "\n\t" + imovel + 
                 "\n\tValor Total da Venda: R$" + valorTotalVenda + 

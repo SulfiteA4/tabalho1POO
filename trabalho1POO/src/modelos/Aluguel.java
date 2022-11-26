@@ -132,16 +132,18 @@ public class Aluguel implements Serializable{
     public String toString() {
         return "\nAluguel:" + 
                "\n\tCodigo: " + codigoAluguel +
+               "\n\tData do Aluguel: " + dataAluguel.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) +
+               "\n\tData de Devolucao: " + dataDevolucao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + 
+               "\n\tData de Pagamento Mensal: " + dataPagamentoMensal.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) +
+               "\n\tPago: "+ ((this.pago)?"SIM":"NAO")+
+               "\n\tValor Total Aluguel: R$ " + valorTotalAluguel + 
                "\n\t" + cliente + 
                "\n\t" + corretor +
                "\n\t" + imovel + 
-               "\n\tData do Aluguel: " + dataAluguel.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) +
-               "\n\tData de Devolucao: " + dataDevolucao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + 
-               "\n\tData de Pagamento Mensal: " + dataPagamentoMensal.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + 
-               "\n\tValor Total Aluguel: R$ " + valorTotalAluguel + 
                "\n\tForma de Pagamento: " + formaPagamento + 
                "\n\tSeguros Contratados: " + segurosContratados + 
-               "\n\tPago: "+ ((this.pago)?"SIM":"NAO");
+               "\n_____________________________________________________________________________________________";  
+               
     }
 
     

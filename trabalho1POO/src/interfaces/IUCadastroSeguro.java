@@ -42,9 +42,9 @@ public class IUCadastroSeguro extends javax.swing.JFrame {
         txtAreaDescricao = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         btnCadastroSeguro = new javax.swing.JButton();
-        txtValor = new javax.swing.JFormattedTextField();
+        txtValor = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         lblCadastroCliente.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
@@ -80,8 +80,6 @@ public class IUCadastroSeguro extends javax.swing.JFrame {
             }
         });
 
-        txtValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,##0.00"))));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -100,8 +98,8 @@ public class IUCadastroSeguro extends javax.swing.JFrame {
                         .addComponent(txtNomeSeguradoura1))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCadastroSeguro))
                     .addComponent(jScrollPane1)
@@ -212,6 +210,6 @@ public class IUCadastroSeguro extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtCodigo;
     private javax.swing.JFormattedTextField txtNomeSeguradoura1;
     private javax.swing.JFormattedTextField txtTipoSeguro;
-    private javax.swing.JFormattedTextField txtValor;
+    private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 }

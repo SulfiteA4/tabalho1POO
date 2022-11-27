@@ -8,6 +8,7 @@ import controladores.Controlador;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
+import modelos.Aluguel;
 import modelos.Cartao;
 import modelos.Cliente;
 import modelos.Venda;
@@ -23,6 +24,9 @@ public class IUCadastroVenda extends javax.swing.JFrame {
      */
     public IUCadastroVenda() {
         initComponents();
+        
+        lblDigCodigo1.setVisible(false); 
+        lblMensagem.setVisible(false); 
     }
 
     /**
@@ -61,6 +65,8 @@ public class IUCadastroVenda extends javax.swing.JFrame {
         btnBuscaCliente = new javax.swing.JButton();
         btnBuscaCorretor = new javax.swing.JButton();
         btnBuscaImovel = new javax.swing.JButton();
+        lblMensagem = new javax.swing.JLabel();
+        lblDigCodigo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -73,6 +79,15 @@ public class IUCadastroVenda extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         jLabel1.setText("Código Venda");
+
+        txtCodigoVenda.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCodigoVendaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCodigoVendaFocusLost(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         jLabel2.setText("Código Cliente");
@@ -231,6 +246,8 @@ public class IUCadastroVenda extends javax.swing.JFrame {
             }
         });
 
+        txtValorTotal.setEnabled(false);
+
         btnBuscaCliente.setText("Consultar Cliente");
         btnBuscaCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -252,6 +269,14 @@ public class IUCadastroVenda extends javax.swing.JFrame {
             }
         });
 
+        lblMensagem.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        lblMensagem.setForeground(new java.awt.Color(255, 0, 51));
+        lblMensagem.setText("ESTE CÓDIGO JA POSSUI UM CADASTRO");
+
+        lblDigCodigo1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 10)); // NOI18N
+        lblDigCodigo1.setForeground(new java.awt.Color(255, 0, 0));
+        lblDigCodigo1.setText("Digite o código!!");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -268,35 +293,45 @@ public class IUCadastroVenda extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addComponent(lblCadastroVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnBuscaImovel)
-                                .addGap(17, 17, 17)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCodCorretores, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
+                                .addComponent(lblDigCodigo1)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtCodigoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCodCliente)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnBuscaCorretor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscaCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(lblCadastroVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnBuscaImovel)
+                                        .addGap(17, 17, 17)
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtCodCorretores, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtCodigoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(40, 40, 40)
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtCodCliente)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnBuscaCorretor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnBuscaCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(43, 43, 43))
             .addGroup(layout.createSequentialGroup()
-                .addGap(338, 338, 338)
-                .addComponent(btnCadastroVendas)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(338, 338, 338)
+                        .addComponent(btnCadastroVendas))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(265, 265, 265)
+                        .addComponent(lblMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -304,14 +339,18 @@ public class IUCadastroVenda extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(lblCadastroVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtCodigoVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(txtCodCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscaCliente))
-                .addGap(24, 24, 24)
+                .addGap(5, 5, 5)
+                .addComponent(lblDigCodigo1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtImovel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -447,6 +486,48 @@ public class IUCadastroVenda extends javax.swing.JFrame {
     private void txtCodClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodClienteFocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodClienteFocusLost
+
+    private void txtCodigoVendaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodigoVendaFocusLost
+        if(txtCodigoVenda.getText().length()!= 0){
+            lblDigCodigo1.setVisible(false); 
+            int codigoVend = Integer.parseInt(txtCodigoVenda.getText()); 
+            Controlador control = new Controlador(); 
+            Venda venda = control.buscaAVendaPorCodigo(codigoVend);
+            
+            if (venda != null){
+                lblDigCodigo1.setVisible(false); 
+            //txtBandeira.setEnabled(false);
+                txtCodCliente.setEnabled(false);
+                txtCodCorretores.setEnabled(false);
+                txtDataVenda.setEnabled(false);
+                txtImovel.setEnabled(false);
+                
+
+                lblMensagem.setVisible(true);
+                btnCadastroVendas.setEnabled(false);
+                btnCadastroVendas.requestFocus(); 
+            }else{
+                lblMensagem.setVisible(false); 
+                btnCadastroVendas.setEnabled(true);
+            }
+        }else if(txtCodigoVenda.getText().length() == 0){
+            txtCodigoVenda.requestFocus();
+            lblDigCodigo1.setVisible(true);
+        }                
+    }//GEN-LAST:event_txtCodigoVendaFocusLost
+
+    private void txtCodigoVendaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodigoVendaFocusGained
+            lblMensagem.setVisible(false);
+
+            //txtBandeira.setEnabled(true);
+            txtCodCliente.setEnabled(true);
+            txtCodCorretores.setEnabled(true);
+            txtCodigoVenda.setEnabled(true);
+            txtDataVenda.setEnabled(true);
+            txtImovel.setEnabled(true);
+            
+            
+    }//GEN-LAST:event_txtCodigoVendaFocusGained
     
 
     /**
@@ -504,6 +585,8 @@ public class IUCadastroVenda extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCadastroVenda;
+    private javax.swing.JLabel lblDigCodigo1;
+    private javax.swing.JLabel lblMensagem;
     private javax.swing.JTextField txtBandeira;
     private javax.swing.JFormattedTextField txtCodCliente;
     private javax.swing.JFormattedTextField txtCodCorretores;

@@ -5,7 +5,11 @@
 package interfaces;
 
 import controladores.Controlador;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
+import modelos.Corretor;
 import modelos.Seguro;
 
 /**
@@ -19,6 +23,8 @@ public class IUCadastroSeguro extends javax.swing.JFrame {
      */
     public IUCadastroSeguro() {
         initComponents();
+        lblDigCodigo1.setVisible(false); 
+        lblMensagem.setVisible(false); 
     }
 
     /**
@@ -43,6 +49,8 @@ public class IUCadastroSeguro extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         btnCadastroSeguro = new javax.swing.JButton();
         txtValor = new javax.swing.JTextField();
+        lblMensagem = new javax.swing.JLabel();
+        lblDigCodigo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -55,6 +63,15 @@ public class IUCadastroSeguro extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         jLabel1.setText("Código");
+
+        txtCodigo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCodigoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCodigoFocusLost(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         jLabel2.setText("Nome da Seguradoura");
@@ -80,6 +97,14 @@ public class IUCadastroSeguro extends javax.swing.JFrame {
             }
         });
 
+        lblMensagem.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        lblMensagem.setForeground(new java.awt.Color(255, 0, 51));
+        lblMensagem.setText("ESTE CÓDIGO JA POSSUI UM CADASTRO");
+
+        lblDigCodigo1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 10)); // NOI18N
+        lblDigCodigo1.setForeground(new java.awt.Color(255, 0, 0));
+        lblDigCodigo1.setText("Digite o código!!");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -88,14 +113,6 @@ public class IUCadastroSeguro extends javax.swing.JFrame {
                 .addContainerGap(56, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel4)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtNomeSeguradoura1))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -107,34 +124,55 @@ public class IUCadastroSeguro extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtTipoSeguro, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblCadastroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblCadastroCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNomeSeguradoura1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblDigCodigo1)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(51, 51, 51))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(140, 140, 140)
+                .addComponent(lblMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addComponent(lblCadastroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addComponent(lblMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(txtNomeSeguradoura1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(3, 3, 3)
+                .addComponent(lblDigCodigo1)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtTipoSeguro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(btnCadastroSeguro)
                     .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -161,6 +199,50 @@ public class IUCadastroSeguro extends javax.swing.JFrame {
         
 
     }//GEN-LAST:event_btnCadastroSeguroActionPerformed
+
+    private void txtCodigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodigoFocusLost
+            if(txtCodigo.getText().length()!= 0){
+            lblDigCodigo1.setVisible(false); 
+            int codigoSeg = Integer.parseInt(txtCodigo.getText()); 
+            Controlador control = new Controlador(); 
+            Seguro seg = control.buscaSeguroPorCodigo(codigoSeg);
+            
+            if (seg != null){
+                String valor = Float.toString(seg.getValor());
+                
+                btnCadastroSeguro.setEnabled(false);
+                btnCadastroSeguro.requestFocus();
+                lblMensagem.setVisible(true);
+
+                txtAreaDescricao.setText(seg.getDescricao());
+                txtNomeSeguradoura1.setText(seg.getNomeSeguradora());
+                txtTipoSeguro.setText(seg.getTipo());
+                txtValor.setText(valor);
+                
+
+            }else{
+                btnCadastroSeguro.setEnabled(true);
+                txtAreaDescricao.setText("");
+                txtNomeSeguradoura1.setText("");
+                txtTipoSeguro.setText("");
+                txtValor.setText("");
+                 
+            }
+        }else if(txtCodigo.getText().length() == 0){
+            txtCodigo.requestFocus();
+            lblDigCodigo1.setVisible(true);
+        }
+    }//GEN-LAST:event_txtCodigoFocusLost
+
+    private void txtCodigoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodigoFocusGained
+            lblMensagem.setVisible(false);
+      
+            txtAreaDescricao.setText("");
+            txtNomeSeguradoura1.setText("");
+            txtTipoSeguro.setText("");
+            txtValor.setText("");
+
+    }//GEN-LAST:event_txtCodigoFocusGained
 
     /**
      * @param args the command line arguments
@@ -206,6 +288,8 @@ public class IUCadastroSeguro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCadastroCliente;
+    private javax.swing.JLabel lblDigCodigo1;
+    private javax.swing.JLabel lblMensagem;
     private javax.swing.JTextArea txtAreaDescricao;
     private javax.swing.JFormattedTextField txtCodigo;
     private javax.swing.JFormattedTextField txtNomeSeguradoura1;

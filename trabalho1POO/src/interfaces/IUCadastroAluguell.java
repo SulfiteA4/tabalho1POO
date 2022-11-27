@@ -39,7 +39,8 @@ public class IUCadastroAluguell extends javax.swing.JFrame {
         txtSeguradoura.setEditable(false);
         txtTipoSeguro.setEditable(false);
         txtValor.setEditable(false);
-        
+        lblMensagem.setVisible(false);
+        lblDigCodigo.setVisible(false); 
 
        
         
@@ -103,6 +104,8 @@ public class IUCadastroAluguell extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         txtCliente = new javax.swing.JTextField();
         txtCodigo = new javax.swing.JTextField();
+        lblMensagem = new javax.swing.JLabel();
+        lblDigCodigo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -469,11 +472,27 @@ public class IUCadastroAluguell extends javax.swing.JFrame {
 
         txtCliente.setEnabled(false);
 
+        txtCodigo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCodigoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCodigoFocusLost(evt);
+            }
+        });
         txtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodigoActionPerformed(evt);
             }
         });
+
+        lblMensagem.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        lblMensagem.setForeground(new java.awt.Color(255, 0, 51));
+        lblMensagem.setText("ESTE CÓDIGO JA POSSUI UM CADASTRO");
+
+        lblDigCodigo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 10)); // NOI18N
+        lblDigCodigo.setForeground(new java.awt.Color(255, 0, 0));
+        lblDigCodigo.setText("Digite o código!!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -493,50 +512,61 @@ public class IUCadastroAluguell extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCadastrarAlug, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCadastroCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCodigo))
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(3, 3, 3)
-                                .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel9)
-                                .addGap(5, 5, 5))
+                                .addComponent(lblDigCodigo)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(43, 43, 43)
-                                .addComponent(jLabel4)
-                                .addGap(9, 9, 9)
-                                .addComponent(txtDataAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtCorretor, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtImovel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCodigo))
                                 .addGap(14, 14, 14)
-                                .addComponent(btnCorretores, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(8, 8, 8)
-                                .addComponent(txtDataDevolu, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(43, 43, 43)
+                                        .addComponent(jLabel4)
+                                        .addGap(9, 9, 9)
+                                        .addComponent(txtDataAluguel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(3, 3, 3)
+                                        .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel9)
+                                        .addGap(5, 5, 5)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(txtCorretor, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(14, 14, 14)
+                                        .addComponent(btnCorretores, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addGap(8, 8, 8)
+                                        .addComponent(txtDataDevolu, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addGap(51, 51, 51))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(281, 281, 281))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(lblCadastroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(4, 4, 4)
+                .addComponent(lblMensagem)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
@@ -546,7 +576,9 @@ public class IUCadastroAluguell extends javax.swing.JFrame {
                     .addComponent(btnCorretores)
                     .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addGap(3, 3, 3)
+                .addComponent(lblDigCodigo)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtImovel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -563,11 +595,11 @@ public class IUCadastroAluguell extends javax.swing.JFrame {
                     .addComponent(txtValorAlug, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCadastrarAlug)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
@@ -810,6 +842,67 @@ public class IUCadastroAluguell extends javax.swing.JFrame {
         txtCorretor.setText(codCorretor);
     }//GEN-LAST:event_btnCorretoresActionPerformed
 
+    private void txtCodigoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodigoFocusLost
+   
+        
+        if(txtCodigo.getText().length()!= 0){
+            lblDigCodigo.setVisible(false); 
+            int codigoAlug = Integer.parseInt(txtCodigo.getText()); 
+            Controlador control = new Controlador(); 
+            Aluguel alug = control.buscaAluguelPorCodigo(codigoAlug);
+            
+            if (alug != null){
+                lblDigCodigo.setEnabled(false); 
+            //txtBandeira.setEnabled(false);
+                txtCliente.setEnabled(false);
+                txtCodSeguro.setEnabled(false);
+                txtCorretor.setEnabled(false);
+                txtDataAluguel.setEnabled(false);
+                txtDataDevolu.setEnabled(false);
+                txtDataPagMensal.setEnabled(false);
+                txtDescSeguro.setEnabled(false);
+                txtImovel.setEnabled(false);
+                //txtNomeCartao.setEnabled(false);
+                txtSeguradoura.setEnabled(false);
+                txtTipoSeguro.setEnabled(false);
+                txtValor.setEnabled(false);
+                txtValorAlug.setEnabled(false);
+                //TxtNumeroCartao.setEnabled(false);
+
+                lblMensagem.setVisible(true);
+                btnCadastrarAlug.setEnabled(false);
+                btnCadastrarAlug.requestFocus(); 
+            }else{
+                lblMensagem.setVisible(false); 
+                btnCadastrarAlug.setEnabled(true);
+            }
+        }else if(txtCodigo.getText().length() == 0){
+            txtCodigo.requestFocus();
+            lblDigCodigo.setVisible(true);
+        }        
+    }//GEN-LAST:event_txtCodigoFocusLost
+
+    private void txtCodigoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodigoFocusGained
+            
+            lblMensagem.setVisible(false);
+
+            //txtBandeira.setEnabled(true);
+            txtCliente.setEnabled(true);
+            txtCodSeguro.setEnabled(true);
+            txtCorretor.setEnabled(true);
+            txtDataAluguel.setEnabled(true);
+            txtDataDevolu.setEnabled(true);
+            txtDataPagMensal.setEnabled(true);
+            txtDescSeguro.setEnabled(true);
+            txtImovel.setEnabled(true);
+            //txtNomeCartao.setEnabled(true);
+            txtSeguradoura.setEnabled(true);
+            txtTipoSeguro.setEnabled(true);
+            txtValor.setEnabled(true);
+            txtValorAlug.setEnabled(true);
+            //TxtNumeroCartao.setEnabled(true);
+    }//GEN-LAST:event_txtCodigoFocusGained
+
     /**
      * @param args the command line arguments
      */
@@ -878,6 +971,8 @@ public class IUCadastroAluguell extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblCadastroCliente;
+    private javax.swing.JLabel lblDigCodigo;
+    private javax.swing.JLabel lblMensagem;
     private javax.swing.JTable tabela;
     private javax.swing.JTextField txtBandeira;
     private javax.swing.JTextField txtCliente;

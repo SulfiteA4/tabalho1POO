@@ -68,7 +68,6 @@ public class IUPrincipal extends javax.swing.JFrame {
         jMenuImoveisIndisp = new javax.swing.JMenuItem();
         jMenuImovAtrasoAlug = new javax.swing.JMenuItem();
         jMenuAlugCliEsp = new javax.swing.JMenuItem();
-        jMenuVendaCliEsp = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 10)); // NOI18N
@@ -331,6 +330,11 @@ public class IUPrincipal extends javax.swing.JFrame {
         subMenuRelImovel.add(jMenuImoveisIndisp);
 
         jMenuImovAtrasoAlug.setText("Imóveis Aluguel Atrasado");
+        jMenuImovAtrasoAlug.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuImovAtrasoAlugActionPerformed(evt);
+            }
+        });
         subMenuRelImovel.add(jMenuImovAtrasoAlug);
 
         jMenuAlugCliEsp.setText("Imóveis Alugados Cliente Específico");
@@ -340,9 +344,6 @@ public class IUPrincipal extends javax.swing.JFrame {
             }
         });
         subMenuRelImovel.add(jMenuAlugCliEsp);
-
-        jMenuVendaCliEsp.setText("Imóveis Comprados Cliente Específico ");
-        subMenuRelImovel.add(jMenuVendaCliEsp);
 
         jMenuRelat.add(subMenuRelImovel);
 
@@ -377,7 +378,8 @@ public class IUPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuComerciaisActionPerformed
 
     private void jMenuAlugCliEspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAlugCliEspActionPerformed
-        // TODO add your handling code here:
+        IURelatorioImovelAlugCliEspecifico relAlugCliEspec = new IURelatorioImovelAlugCliEspecifico(null, false);
+        relAlugCliEspec.setVisible(true);
     }//GEN-LAST:event_jMenuAlugCliEspActionPerformed
 
     private void jMenuCasasContrVigenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCasasContrVigenteActionPerformed
@@ -499,6 +501,13 @@ public class IUPrincipal extends javax.swing.JFrame {
         vendasMesLucroMes.setVisible(true);
     }//GEN-LAST:event_jMenuMesesEspeciActionPerformed
 
+
+    private void jMenuImovAtrasoAlugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuImovAtrasoAlugActionPerformed
+        Controlador control = new Controlador();
+        IURelatorioTodosGeral relatorioImoveisAlugAtraso =  new IURelatorioTodosGeral(null, false);
+        relatorioImoveisAlugAtraso.exibir("Relatório Todos imóveis com atraso no aluguel", "Todos os imóveis com alugueis atrasados" , control.listaImoveisAlugueisAtrasados().toString());
+    }//GEN-LAST:event_jMenuImovAtrasoAlugActionPerformed
+
     private void jMenuApContrVigenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuApContrVigenteActionPerformed
         Controlador control = new Controlador();
         IURelatorioTodosGeral apContVigente = new IURelatorioTodosGeral(null, false);
@@ -528,6 +537,7 @@ public class IUPrincipal extends javax.swing.JFrame {
         IURelatorioTodosGeral relatorioImovDispAluguel =  new IURelatorioTodosGeral(null, false);
         relatorioImovDispAluguel.exibir("Relatório Todos imóveis disponíveis para Aluguel", "Todos os imóveis disponíveis para Aluguel" , control.listaImoveisDisponiveisLocacao().toString());
     }//GEN-LAST:event_jMenuImoveisDispAluActionPerformed
+
 
 
 
@@ -593,7 +603,6 @@ public class IUPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuRelat;
     private javax.swing.JMenuItem jMenuSeguros;
     private javax.swing.JMenuItem jMenuTodosImoveis;
-    private javax.swing.JMenuItem jMenuVendaCliEsp;
     private javax.swing.JMenuItem jMenuVendas;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;

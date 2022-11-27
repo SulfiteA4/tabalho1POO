@@ -6,9 +6,12 @@
 package interfaces;
 
 import controladores.Controlador;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
+import modelos.Cliente;
 import modelos.Corretor;
 
 /**
@@ -20,6 +23,9 @@ public class IUCadastroCorretor extends javax.swing.JFrame {
     /** Creates new form IUCadastroCorretor */
     public IUCadastroCorretor() {
         initComponents();
+        lblMensagem.setVisible(false); 
+        lblDigCodigo.setVisible(false);
+        
     }
 
     /** This method is called from within the constructor to
@@ -59,6 +65,8 @@ public class IUCadastroCorretor extends javax.swing.JFrame {
         Salário = new javax.swing.JLabel();
         txtSalario = new javax.swing.JFormattedTextField();
         txtDataAdmissao = new javax.swing.JFormattedTextField();
+        lblMensagem = new javax.swing.JLabel();
+        lblDigCodigo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -128,6 +136,15 @@ public class IUCadastroCorretor extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        txtCodigoCorretor.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCodigoCorretorFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCodigoCorretorFocusLost(evt);
+            }
+        });
+
         txtNomeCorretor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNomeCorretorActionPerformed(evt);
@@ -175,6 +192,14 @@ public class IUCadastroCorretor extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+
+        lblMensagem.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        lblMensagem.setForeground(new java.awt.Color(255, 0, 51));
+        lblMensagem.setText("ESTE CÓDIGO JA POSSUI UM CADASTRO");
+
+        lblDigCodigo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 10)); // NOI18N
+        lblDigCodigo.setForeground(new java.awt.Color(255, 0, 0));
+        lblDigCodigo.setText("Digite o código!!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -242,7 +267,9 @@ public class IUCadastroCorretor extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCodigoCorretor, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblDigCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCodigoCorretor, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -256,8 +283,13 @@ public class IUCadastroCorretor extends javax.swing.JFrame {
                         .addGap(14, 14, 14)))
                 .addGap(44, 44, 44))
             .addGroup(layout.createSequentialGroup()
-                .addGap(230, 230, 230)
-                .addComponent(btnCadastroCorretor)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(230, 230, 230)
+                        .addComponent(btnCadastroCorretor))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(167, 167, 167)
+                        .addComponent(lblMensagem)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -265,13 +297,17 @@ public class IUCadastroCorretor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(lblCadastroCorretpr, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGap(8, 8, 8)
+                .addComponent(lblMensagem)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtCodigoCorretor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(txtNomeCorretor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addGap(3, 3, 3)
+                .addComponent(lblDigCodigo)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
@@ -370,6 +406,83 @@ public class IUCadastroCorretor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeCorretorActionPerformed
 
+    private void txtCodigoCorretorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodigoCorretorFocusLost
+        
+        if(txtCodigoCorretor.getText().length()!= 0){
+            lblDigCodigo.setVisible(false); 
+            int codigoCorretor = Integer.parseInt(txtCodigoCorretor.getText()); 
+            Controlador control = new Controlador(); 
+            Corretor cor = control.buscaCorretorPorCodigo(codigoCorretor);
+            
+            if (cor != null){
+                String salario = Float.toString(cor.getSalario()); 
+
+                LocalDate dataNasc = cor.getDataNascimento();
+                Date date = Date.valueOf(dataNasc);
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy"); 
+                String dataNascimento = format.format(date); 
+
+                LocalDate dataAdmissao = cor.getDataAdmissao();
+                Date date2 = Date.valueOf(dataAdmissao);
+                SimpleDateFormat format2 = new SimpleDateFormat("dd/MM/yyyy"); 
+                String dataAdmissao2 = format2.format(date2); 
+
+
+
+                 btnCadastroCorretor.setEnabled(false);
+                 btnCadastroCorretor.requestFocus();
+                 lblMensagem.setVisible(true);
+
+                 txtCEPCorretor.setText(cor.getCep());
+                 txtCPFCorretor.setText(cor.getCpf());
+                 txtCreciCorretor.setText(cor.getCreci());
+                 txtDadaNascCorretor.setText(dataNascimento);
+                 txtDataAdmissao.setText(dataAdmissao2);
+                 txtEmailCorretor.setText(cor.getEmail());
+                 txtEnderecoCorretor.setText(cor.getEndereco());
+                 txtNomeCorretor.setText(cor.getNome());
+                 txtPISCorretor.setText(cor.getPis());
+                 txtRGCorretor.setText(cor.getRg());
+                 txtSalario.setText(salario);
+                 txtTelefoneCorretor.setText(cor.getTelefone());
+
+            }else{
+                btnCadastroCorretor.setEnabled(true);
+                txtCEPCorretor.setText("");
+                txtCPFCorretor.setText("");
+                txtCreciCorretor.setText("");
+                txtDadaNascCorretor.setText("");
+                txtDataAdmissao.setText("");
+                txtEmailCorretor.setText("");
+                txtEnderecoCorretor.setText("");
+                txtNomeCorretor.setText("");
+                txtPISCorretor.setText("");
+                txtRGCorretor.setText("");
+                txtSalario.setText("");
+                txtTelefoneCorretor.setText(""); 
+            }
+        }else if(txtCodigoCorretor.getText().length() == 0){
+            txtCodigoCorretor.requestFocus();
+            lblDigCodigo.setVisible(true);
+        }
+    }//GEN-LAST:event_txtCodigoCorretorFocusLost
+
+    private void txtCodigoCorretorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodigoCorretorFocusGained
+            lblMensagem.setVisible(false);
+            txtCEPCorretor.setText("");
+            txtCPFCorretor.setText("");
+            txtCreciCorretor.setText("");
+            txtDadaNascCorretor.setText("");
+            txtDataAdmissao.setText("");
+            txtEmailCorretor.setText("");
+            txtEnderecoCorretor.setText("");
+            txtNomeCorretor.setText("");
+            txtPISCorretor.setText("");
+            txtRGCorretor.setText("");
+            txtSalario.setText("");
+            txtTelefoneCorretor.setText(""); 
+    }//GEN-LAST:event_txtCodigoCorretorFocusGained
+
     /**
      * @param args the command line arguments
      */
@@ -421,6 +534,8 @@ public class IUCadastroCorretor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel lblCadastroCorretpr;
+    private javax.swing.JLabel lblDigCodigo;
+    private javax.swing.JLabel lblMensagem;
     private javax.swing.JFormattedTextField txtCEPCorretor;
     private javax.swing.JFormattedTextField txtCPFCorretor;
     private javax.swing.JFormattedTextField txtCodigoCorretor;

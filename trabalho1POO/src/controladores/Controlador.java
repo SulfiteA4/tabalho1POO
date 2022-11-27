@@ -350,6 +350,22 @@ public class Controlador {
         return historico;
     }
     
+    //Função nova
+    public ArrayList<Aluguel> listaHistoricoCAlugueisClienteEspecifico(int codCliente){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Aluguel> todosAlugueis = arq.lerAlugueis();
+        ArrayList<Aluguel> historico = new ArrayList();
+        for(int i = 0; i < todosAlugueis.size(); i++){
+            if(todosAlugueis.get(i).getCliente().getCodigoUsuario() == codCliente){
+                historico.add(todosAlugueis.get(i));
+                
+            }
+        }
+        return historico;
+    }
+    
+    
+    
     //15. Listar Clientes com alugueis em atraso.
     public ArrayList<Cliente> listaClientesComAlugueisAtrasados(){
         IOArquivos arq = new IOArquivos();
@@ -582,7 +598,37 @@ public class Controlador {
             }
         }
         return null;
-    }     
+    }  
+    
+        public Aluguel buscaAluguelPorCodigo(int codigo){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Aluguel> todosAlugueis = arq.lerAlugueis();
+        if(todosAlugueis == null){
+            JOptionPane.showMessageDialog(null, "Ainda não existem Alugueis Cadastrados!");
+        }else {
+            for(int i = 0; i < todosAlugueis.size(); i++){
+                if (todosAlugueis.get(i).getCodigoAluguel()== codigo){
+                    return todosAlugueis.get(i);
+                }
+            }
+        }
+        return null;
+    } 
+        
+    public Venda buscaAVendaPorCodigo(int codigo){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Venda> todasVendas = arq.lerVendas();
+        if(todasVendas == null){
+            JOptionPane.showMessageDialog(null, "Ainda não existem Vendas Cadastrados!");
+        }else {
+            for(int i = 0; i < todasVendas.size(); i++){
+                if (todasVendas.get(i).getCodigoVenda()== codigo){
+                    return todasVendas.get(i);
+                }
+            }
+        }
+        return null;
+    }    
     
 }
     

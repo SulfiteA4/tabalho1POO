@@ -287,6 +287,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Im&#xf3;veis Aluguel Atrasado"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuImovAtrasoAlugActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuAlugCliEsp">
                   <Properties>
@@ -295,11 +298,6 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuAlugCliEspActionPerformed"/>
                   </Events>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuVendaCliEsp">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Im&#xf3;veis Comprados Cliente Espec&#xed;fico "/>
-                  </Properties>
                 </MenuItem>
               </SubComponents>
             </Menu>

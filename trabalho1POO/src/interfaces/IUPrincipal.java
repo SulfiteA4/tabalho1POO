@@ -195,9 +195,19 @@ public class IUPrincipal extends javax.swing.JFrame {
         subMenuRelVend.add(jMenuIAlugueis);
 
         jMenuAlugFinalizados.setText("Alugueis Finalizados");
+        jMenuAlugFinalizados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuAlugFinalizadosActionPerformed(evt);
+            }
+        });
         subMenuRelVend.add(jMenuAlugFinalizados);
 
         jMenuAlugNaoFinalizados.setText("Alugueis Não Finalizados ");
+        jMenuAlugNaoFinalizados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuAlugNaoFinalizadosActionPerformed(evt);
+            }
+        });
         subMenuRelVend.add(jMenuAlugNaoFinalizados);
 
         jMenuCasasContrVigente.setText("Casas Residenciais Alugadas (Contrado Vigente)");
@@ -209,9 +219,19 @@ public class IUPrincipal extends javax.swing.JFrame {
         subMenuRelVend.add(jMenuCasasContrVigente);
 
         jMenuApContrVigente.setText("Apartamentos Residenciais Alugados (Contrato Vigente)");
+        jMenuApContrVigente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuApContrVigenteActionPerformed(evt);
+            }
+        });
         subMenuRelVend.add(jMenuApContrVigente);
 
         jMenuComerciaisContrVigente.setText("Estabelecimentos Comerciais Alugados (Contrato Vigente)");
+        jMenuComerciaisContrVigente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuComerciaisContrVigenteActionPerformed(evt);
+            }
+        });
         subMenuRelVend.add(jMenuComerciaisContrVigente);
         subMenuRelVend.add(jSeparator1);
 
@@ -286,6 +306,11 @@ public class IUPrincipal extends javax.swing.JFrame {
         subMenuRelImovel.add(jSeparator3);
 
         jMenuImoveisDispAlu.setText("Imóveis Disponíveis (Aluguel)");
+        jMenuImoveisDispAlu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuImoveisDispAluActionPerformed(evt);
+            }
+        });
         subMenuRelImovel.add(jMenuImoveisDispAlu);
 
         jMenuImoveisDispVend.setText("Imóveis Disponíveis (Venda)");
@@ -358,7 +383,9 @@ public class IUPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuAlugCliEspActionPerformed
 
     private void jMenuCasasContrVigenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCasasContrVigenteActionPerformed
-        // TODO add your handling code here:
+        Controlador control = new Controlador();
+        IURelatorioTodosGeral casasContVigente = new IURelatorioTodosGeral(null, false);
+        casasContVigente.exibir("Relatório Casas Residenciais Alugadas Com Cotrato Vigente", "Relatório Casas Residenciais Alugadas Com Cotrato Vigente", control.listaCasasResidenciaisContratoVigente().toString());
     }//GEN-LAST:event_jMenuCasasContrVigenteActionPerformed
 
     private void jMenuCadastrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCadastrosActionPerformed
@@ -474,11 +501,43 @@ public class IUPrincipal extends javax.swing.JFrame {
         vendasMesLucroMes.setVisible(true);
     }//GEN-LAST:event_jMenuMesesEspeciActionPerformed
 
+
     private void jMenuImovAtrasoAlugActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuImovAtrasoAlugActionPerformed
         Controlador control = new Controlador();
         IURelatorioTodosGeral relatorioImoveisAlugAtraso =  new IURelatorioTodosGeral(null, false);
         relatorioImoveisAlugAtraso.exibir("Relatório Todos imóveis com atraso no aluguel", "Todos os imóveis com alugueis atrasados" , control.listaImoveisAlugueisAtrasados().toString());
     }//GEN-LAST:event_jMenuImovAtrasoAlugActionPerformed
+
+    private void jMenuApContrVigenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuApContrVigenteActionPerformed
+        Controlador control = new Controlador();
+        IURelatorioTodosGeral apContVigente = new IURelatorioTodosGeral(null, false);
+        apContVigente.exibir("Relatório Apartamento Residenciais Alugadas Com Cotrato Vigente", "Relatório Apartamentos Residenciais Alugadas Com Cotrato Vigente", control.listaApartamentosResidenciaisContratoVigente().toString());
+    }//GEN-LAST:event_jMenuApContrVigenteActionPerformed
+
+    private void jMenuComerciaisContrVigenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuComerciaisContrVigenteActionPerformed
+        Controlador control = new Controlador();
+        IURelatorioTodosGeral comContVigente = new IURelatorioTodosGeral(null, false);
+        comContVigente.exibir("Relatório Estabelecimentos Comerciais Alugadas Com Cotrato Vigente", "Relatório Estabelecimentos Comerciais Alugadas Com Cotrato Vigente", control.listaComerciaisContratoVigente().toString());
+    }//GEN-LAST:event_jMenuComerciaisContrVigenteActionPerformed
+
+    private void jMenuAlugNaoFinalizadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAlugNaoFinalizadosActionPerformed
+        Controlador control = new Controlador();
+        IURelatorioTodosGeral alugNaoFinalizados = new IURelatorioTodosGeral(null, false);
+        alugNaoFinalizados.exibir("Relatório de Alugueis ainda não Finalizados", "Relatório de Alugueis ainda não Finalizados", control.listaAlugueisNaoFinalizados().toString());
+    }//GEN-LAST:event_jMenuAlugNaoFinalizadosActionPerformed
+
+    private void jMenuAlugFinalizadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAlugFinalizadosActionPerformed
+        Controlador control = new Controlador();
+        IURelatorioTodosGeral alugFinalizados = new IURelatorioTodosGeral(null, false);
+        alugFinalizados.exibir("Relatório de Alugueis Finalizados", "Relatório de Alugueis Finalizados", control.listaAlugueisFinalizados().toString());
+    }//GEN-LAST:event_jMenuAlugFinalizadosActionPerformed
+
+    private void jMenuImoveisDispAluActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuImoveisDispAluActionPerformed
+        Controlador control = new Controlador();
+        IURelatorioTodosGeral relatorioImovDispAluguel =  new IURelatorioTodosGeral(null, false);
+        relatorioImovDispAluguel.exibir("Relatório Todos imóveis disponíveis para Aluguel", "Todos os imóveis disponíveis para Aluguel" , control.listaImoveisDisponiveisLocacao().toString());
+    }//GEN-LAST:event_jMenuImoveisDispAluActionPerformed
+
 
 
 

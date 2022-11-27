@@ -146,11 +146,17 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Alugueis Finalizados"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuAlugFinalizadosActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuAlugNaoFinalizados">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Alugueis N&#xe3;o Finalizados "/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuAlugNaoFinalizadosActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuCasasContrVigente">
                   <Properties>
@@ -164,11 +170,17 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Apartamentos Residenciais Alugados (Contrato Vigente)"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuApContrVigenteActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuComerciaisContrVigente">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Estabelecimentos Comerciais Alugados (Contrato Vigente)"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuComerciaisContrVigenteActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
                 </MenuItem>
@@ -251,6 +263,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Im&#xf3;veis Dispon&#xed;veis (Aluguel)"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuImoveisDispAluActionPerformed"/>
+                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuImoveisDispVend">
                   <Properties>

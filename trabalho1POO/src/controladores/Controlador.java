@@ -313,6 +313,20 @@ public class Controlador {
     
     //12.  Listar o Corretores ganhadores do funcionário do mês, ou seja, os corretores que mais alugueis ou vendas realizaram em cada um dos meses.
     public Corretor corretorFuncionarioDoMes(String mes){
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Venda> vendasMes = this.listaTodasVendasMes(Integer.parseInt(mes));
+        ArrayList<Aluguel> aluguelMes = this.listaTodosAluguelMes(Integer.parseInt(mes));
+        ArrayList<Corretor> todosCorretores = arq.lerCorretores();
+        int[] codCor = new int[todosCorretores.size()];
+        for(int i = 0; i < todosCorretores.size(); i++){
+            codCor[i] = todosCorretores.get(i).getCodigoUsuario();
+        }
+        for(int i = 0; i < codCor.length; i++){
+            
+        }
+        
+        
+        
         return null;
     }
     
@@ -470,6 +484,14 @@ public class Controlador {
         return soma;
     }
     
+    public float calculaValorTotalAlugueis(ArrayList<Aluguel> alugueis){
+        float soma = 0;
+        for(int i = 0; i < alugueis.size(); i++){
+            soma += alugueis.get(i).getValorTotalAluguel();
+        }
+        return soma;
+    }
+    
     //23. Listar Vendas realizadas em um mês em específico
     public ArrayList<Venda> listaTodasVendasMes(int mes){
         mes++;
@@ -484,6 +506,20 @@ public class Controlador {
         }
         return vendasMes;
     }    
+    
+    public ArrayList<Aluguel> listaTodosAluguelMes(int mes){
+        mes++;
+        IOArquivos arq = new IOArquivos();
+        ArrayList<Aluguel> todasAluguel = arq.lerAlugueis();
+        ArrayList<Aluguel> AlugueisMes = new ArrayList();
+
+        for(int i = 0; i < todasAluguel.size(); i++){
+            if(todasAluguel.get(i).getDataAluguel().getMonthValue() == mes){
+                AlugueisMes.add(todasAluguel.get(i));
+            }
+        }
+        return AlugueisMes;
+    }  
     
     
     
